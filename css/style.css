@@ -1,9 +1,9 @@
 body {
-  background-color: blue;
+  background-color: #ccdfed;
 
 }
 .top {
-  background-color: red;
+  background-color: #2f3133;
   display: flex;
   justify-content: center;
   justify-content: space-between;
@@ -14,6 +14,7 @@ body {
 
 .page-title {
   margin-left: 50px;
+  color: #ffffff;
 
 
 

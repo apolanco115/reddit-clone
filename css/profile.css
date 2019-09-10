@@ -1,13 +1,17 @@
 body {
   background-color: lightslategrey;
+  font-family: 'Raleway', sans-serif;
+
 
 }
 
 #pageTitle {
   font-size: 100px;
+  font-family: 'Oswald', sans-serif;
 }
 #heading {
   font-size: 25px;
+  font-family: 'Raleway', sans-serif;
 }
 
 .container {
@@ -32,7 +36,7 @@ border: 2px solid white;
 .avatar-pic > img {
 
   margin-top: 45px;
-  margin-bottom: 45px; 
+  margin-bottom: 45px;
 
 }
 

@@ -9,31 +9,42 @@
   </head>
   <body>
 
-  <h1 class id="pageTitle"> notReddit </h1>
-
+    <div class="page-container">
+    <header class = "top">
+      <div class ="page-title">
+        <h1>NotReddit.com<h1>
+      </div>
+      </header>
+      
 
 
     <div class = "container" >
 
-      <form class ="avatar-pic">
-      <h3 id = "heading"> Choose Your Avatar </h3>
-      <img source = "#" alt = "#" >
+      <div class ="avatar-pic">
+        <h3 class = "heading"> Choose Your Avatar </h3>
+        <img src = "images/not-reddit-logo-circ.png" alt = "not reddit logo" >
 
-
-      <input id="profile-pic" type="url" placeholder="Profile Pic Link">
+      <form>
+      <input id="profile-pic" type="file" placeholder="Profile Pic Link">
       <button type="submit" name="button"> upload pic </button>
-      <input id="username" type="text" placeholder="Username">
-      <button type="submit" name="button"> set username </button>
-      </form>
 
-      <form class ="signup-form">
+      </form>
+      </div>
+
+      <div class ="signup-form">
+        <h3 class = "heading"> Sign Up Here </h3>
+            <form>
+
             <input id="email" type="email" placeholder="Email Address">
               <input id="password" type="password" placeholder="Password">
-              <button id="submit"> Submit </button>
-     </form>
+              <input id="username" type="text" placeholder="Username">
+              <button type="submit" name="button"> Create Account </button>
+            </form>
+     </div>
 
   </div>
   <!-- container end div  -->
+  </div>
 
 <script src="js/profile.js"></script>
   </body>

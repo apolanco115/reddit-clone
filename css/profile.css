@@ -1,42 +1,70 @@
 body {
   background-color: lightslategrey;
   font-family: 'Raleway', sans-serif;
-
-
 }
 
-#pageTitle {
-  font-size: 100px;
-  font-family: 'Oswald', sans-serif;
+.page-container {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(3, calc(100%/3));
+  grid-template-rows: 5% 95%;
+  align-items: center;
 }
-#heading {
+
+
+
+
+form > img {
+  max-width: 75px;
+  max-height: 75px;
+}
+
+.top {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column: 1 / 4;
+  height: 100%;
+  background-color: #2f3133;
+  display: flex;
+  justify-content: space-around;
+}
+.page-title {
+  font-family: Sans-Serif;
+  font-size: 2em;
+  color: #ffffff;
+  grid-column-end: 2;
+}
+
+}
+.heading {
   font-size: 25px;
   font-family: 'Raleway', sans-serif;
+  color:white;
 }
 
 .container {
-  background-color:black;
-  display: flex;
-  justify-content: center;
-  margin-top: 200px;
-justify-content: space-around;
-border: 2px solid white;
-}
-
-#heading {
-  font-size: 25px;
-   color:white;
-
+  height: 20vh;
+  grid-row-start: 2;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  display: grid;
+  grid-template-rows: 15% 60% 15%;
+  grid-template-columns: 50% 50%;
 }
 
 .avatar-pic {
   margin-top: 45px;
   display: grid;
+  margin-right: 100px;
+  grid-row: 1;
+  grid-column: 1;
 }
 .avatar-pic > img {
 
-  margin-top: 45px;
-  margin-bottom: 45px;
+  max-height: 45px;
+  max-width: 45px;
+  grid-template-columns:1;
+  grid-template-rows: 2;
 
 }
 
@@ -50,7 +78,7 @@ border: 2px solid black;
 
 .signup-form {
   display:grid;
-  margin-top: 100px;
+  margin-top: 50px;
 
 }
 

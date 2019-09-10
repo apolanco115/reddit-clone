@@ -5,17 +5,10 @@ Throughout this project we will be using HTML and CSS, along with complex JavaSc
 
 
 Monday September 9:
-layout of the site implementing html foundations
-
-
-
-
-
-
-
-
-
-
+layout of the site implementing html foundations.
+Tuesday September 10:
+Added extra page for user to create profile now beginning to work
+on the functionality of the site as well as the buttons.
 
 
 

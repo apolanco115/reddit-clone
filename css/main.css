@@ -8,9 +8,10 @@ body {
   grid-template-rows: 100px 1fr 50px;
   grid-template-columns: 200px 2fr 200px;
   background-color: lightslategrey;
+  font-family: 'Raleway', sans-serif;
 }
 body * {
-  font-family: 'Oswald', sans-serif;
+
 
 
 
@@ -27,6 +28,7 @@ header {
 header > h1 {
   margin-left: 10%;
   color: #E1E2EF;
+  font-family: 'Oswald', sans-serif;
 
 }
 header > input {

@@ -1,0 +1,61 @@
+body {
+  background-color: lightslategrey;
+
+}
+
+#pageTitle {
+  font-size: 100px;
+}
+#heading {
+  font-size: 25px;
+}
+
+.container {
+  background-color:black;
+  display: flex;
+  justify-content: center;
+  margin-top: 200px;
+justify-content: space-around;
+border: 2px solid white;
+}
+
+#heading {
+  font-size: 25px;
+   color:white;
+
+}
+
+.avatar-pic {
+  margin-top: 45px;
+  display: grid;
+}
+.avatar-pic > img {
+
+  margin-top: 45px;
+  margin-bottom: 45px; 
+
+}
+
+
+
+.avatar-pic > button {
+margin: 15px;
+border: 2px solid black;
+}
+
+
+.signup-form {
+  display:grid;
+  margin-top: 100px;
+
+}
+
+.signup-form > input {
+  margin-top: 10px;
+}
+
+.signup-form > button {
+  margin-top: 20px;
+  margin-bottom: 15px;
+  border: 2px solid black;
+}

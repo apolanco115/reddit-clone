@@ -7,25 +7,47 @@ body {
   display: grid;
   grid-template-rows: 100px 1fr 50px;
   grid-template-columns: 200px 2fr 200px;
+  background-color: lightslategrey;
 }
 body * {
+  font-family: 'Oswald', sans-serif;
 
 
 
 }
 header {
   display:flex;
-  justify-content: center;
+  justify-content: start;
   grid-row: 1;
   grid-column: 1 / 4;
-  background-color: cyan;
+  background-color: #02020A;
   border: 2px solid lightslategrey;
   border-radius: 5px;
+}
+header > h1 {
+  margin-left: 10%;
+  color: #E1E2EF;
+
+}
+header > input {
+  margin-left: 27%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+header > button {
+  margin-top: 30px;
+  margin-bottom: 30px;
+
+}
+
+h2 {
+  color: #E1E2EF;
 }
 main {
   grid-row: 2;
   grid-column: 2;
-  background-color: purple;
+  background-color: #92a0b3;
   border: 2px solid lightslategrey;
   border-radius: 5px;
 
@@ -37,48 +59,59 @@ main {
 
 }
 .blog1 {
-  background-color: yellow;
+  background-color: #05204A;
   margin:75px;
   border-radius: 10px;
 }
 
 .blog1 > p {
-  background-color: grey;
+  background-color: #E1E2EF;
+  color:#02020A;
 }
 .blog2 {
-  background-color:yellow;
+  background-color:#05204A;
   margin:75px;
   border-radius: 10px;
 }
 .blog2 > p {
-  background-color: grey;
+  background-color: #E1E2EF;
   align-self: flex-start;
+  color: #02020A;
 }
 .blog3 {
-  background-color: yellow;
+  background-color: #05204A;
   margin:75px;
   border-radius: 10px;
 }
 .blog3 > p {
-  background-color: grey;
+  background-color: #E1E2EF;
+  color: #02020A;
 }
 
 footer {
   grid-row: 3;
   grid-column: 1 /4;
-  background-color: blue;
+  background-color: #02020A;
   border: 2px solid lightslategrey;
   border-radius: 5px;
+}
+
+footer > p {
+  color: #E1E2EF;
 }
 .left {
   grid-row: 2;
   grid-column: 1 / 1;
   border: 2px solid lightslategrey;
   border-radius: 5px;
+  background-color: #05204A;
 }
+
+
 .right {
   grid-row: 2;
   grid-column: 3;
   border: 2px solid lightslategrey;
   border-radius: 5px;
+  background-color: #05204A;
 }

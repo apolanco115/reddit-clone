@@ -1,7 +1,11 @@
-body {
-  background-color: lightslategrey;
+body * {
+
   font-family: 'Raleway', sans-serif;
 }
+body {
+  background-color: lightslategrey;
+}
+
 
 .page-container {
   height: 100vh;
@@ -9,8 +13,39 @@ body {
   grid-template-columns: repeat(3, calc(100%/3));
   grid-template-rows: 5% 95%;
   align-items: center;
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+}
+header {
+  margin: 1em;
+  grid-row: 1 / 2;
+  grid-column: 1 / 4;
+  height: 100%;
+  grid-template-columns: 20% 2fr 20%;
+  background-color: #191e23;
+  border-radius: 10px;
 }
 
+.home-link {
+  color: #E1E2EF;
+  font-family: 'Oswald', sans-serif;
+  align-self: center;
+}
+.home-link h1{
+  margin-left: 20px;
+  font-size: 1.5em;
+  margin-top: 5px;
+
+}
+.home-link a {
+  text-decoration: none;
+
+}
+
+.home-link a:visited{
+  color: #E1E2EF;
+}
 
 
 
@@ -25,8 +60,8 @@ form > img {
   grid-column: 1 / 4;
   height: 100%;
   background-color: #2f3133;
-  display: flex;
   justify-content: space-around;
+  align-self: center;
 }
 .page-title {
   font-family: Sans-Serif;
@@ -40,6 +75,7 @@ form > img {
   font-size: 25px;
   font-family: 'Raleway', sans-serif;
   color:white;
+  justify-content: center;
 }
 
 .container {
@@ -53,7 +89,7 @@ form > img {
 }
 
 .avatar-pic {
-  
+
   display: grid;
   margin-right: 100px;
   grid-row: 2;
@@ -67,12 +103,15 @@ form > img {
 
   max-height: 60px;
   max-width: 60px;
+  align-self: center;
+  margin-left: 50px;
 
 }
 
 .heading2 {
   grid-column:2;
   grid-row: 1;
+  font-family: 'Raleway' sans-serif;
 }
 .middle {
   grid-column:2;

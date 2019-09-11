@@ -1,119 +1,86 @@
 body {
-
-  text-align: center;
-  height: 250vh;
+  margin: 0;
+  height: 100vh;
   width: 100vw;
-  box-sizing: border-box;
   display: grid;
-  grid-template-rows: 100px 1fr 50px;
-  grid-template-columns: 200px 2fr 200px;
-  background-color: lightslategrey;
+  grid-template-rows: 10% 1fr 5%;
+  grid-template-columns: 20% 2fr 20%;
   font-family: 'Raleway', sans-serif;
 }
-body * {
 
-
-
-
-}
 header {
-  display:flex;
-  justify-content: start;
-  grid-row: 1;
+  width: 100%;
+  grid-row: 1 / 2;
   grid-column: 1 / 4;
+  display: grid;
+  grid-template-columns: 20% 2fr 20%;
   background-color: #02020A;
-  border: 2px solid lightslategrey;
-  border-radius: 5px;
 }
-header > h1 {
-  margin-left: 10%;
+.home-link {
+  grid-column-end: 2;
   color: #E1E2EF;
   font-family: 'Oswald', sans-serif;
-
+  justify-self: center;
 }
-header > input {
-  margin-left: 27%;
-  margin-top: 30px;
-  margin-bottom: 30px;
+.home-link a {
+  text-decoration: none;
 }
 
-header > button {
-  margin-top: 30px;
-  margin-bottom: 30px;
+.home-link a:visited{
+  color: #E1E2EF;
+}
+
+.search-bar{
+  grid-column: 2 / 3;
+  align-self: center;
+  justify-self: center;
 
 }
 
 h2 {
   color: #E1E2EF;
 }
+
 main {
   grid-row: 2;
   grid-column: 2;
   background-color: #92a0b3;
-  border: 2px solid lightslategrey;
-  border-radius: 5px;
-
 }
-.blogcontain {
+.post-container {
   display:grid;
   grid-row: 100px 200px 100px;
-  /* border: 2px solid black; */
 
 }
-.blog1 {
+.post {
   background-color: #05204A;
   margin:75px;
   border-radius: 10px;
 }
 
-.blog1 > p {
+.post  p {
   background-color: #E1E2EF;
   color:#02020A;
-}
-.blog2 {
-  background-color:#05204A;
-  margin:75px;
-  border-radius: 10px;
-}
-.blog2 > p {
-  background-color: #E1E2EF;
-  align-self: flex-start;
-  color: #02020A;
-}
-.blog3 {
-  background-color: #05204A;
-  margin:75px;
-  border-radius: 10px;
-}
-.blog3 > p {
-  background-color: #E1E2EF;
-  color: #02020A;
 }
 
 footer {
   grid-row: 3;
   grid-column: 1 /4;
   background-color: #02020A;
-  border: 2px solid lightslategrey;
-  border-radius: 5px;
 }
 
 footer > p {
   color: #E1E2EF;
 }
-.left {
+.section {
+  background-color: #05204A;
+}
+.profile-section {
   grid-row: 2;
   grid-column: 1 / 1;
-  border: 2px solid lightslategrey;
-  border-radius: 5px;
-  background-color: #05204A;
 }
 
 
-.right {
+.friends-section {
   grid-row: 2;
   grid-column: 3;
-  border: 2px solid lightslategrey;
-  border-radius: 5px;
-  background-color: #05204A;
 }

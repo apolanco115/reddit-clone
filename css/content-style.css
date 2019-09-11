@@ -3,22 +3,30 @@ body {
   height: 100vh;
   width: 100vw;
   background-color: #2b2e35;
-  display: grid;
-  grid-template-rows: 5% 1fr 5%;
-  grid-template-columns: 20% 2fr 20%;
+/*  grid-template-rows: 5% 1fr 5%;
+  grid-template-columns: 20% 2fr 20%;*/
   font-family: 'Raleway', sans-serif;
 }
 
 header {
+  position: fixed;
+  top: 0;
+  width: 100%;
   margin: 1em;
   grid-row: 1 / 2;
   grid-column: 1 / 4;
-  height: 100%;
   display: grid;
   grid-template-columns: 20% 2fr 20%;
   background-color: #191e23;
   border-radius: 10px;
 }
+
+.body-content{
+  padding-top: 3em;
+  display: grid;
+  grid-template-columns: 20% 2fr 20%;
+}
+
 .home-link {
   grid-column-end: 2;
   color: #E1E2EF;
@@ -52,18 +60,17 @@ h2 {
 }
 
 main {
-  grid-row: 2;
   grid-column: 2;
-  /*background-color: #2b2e35;*/
 }
-.post-container {
-  display:grid;
-  grid-row: 100px 200px 100px;
 
-}
+
+ul {
+  list-style-type: none;
+ }
+
 .post {
   background-color: #161616; /* #191e23;*/
-  margin:75px;
+  margin: 1em 5em;
   border-radius: 10px;
 }
 
@@ -102,12 +109,10 @@ footer > p {
 }
 
 .profile-section {
-  grid-row: 2;
-  grid-column: 1 / 1;
+  grid-column-end: 2;
 }
 
 
 .friends-section {
-  grid-row: 2;
-  grid-column: 3;
+  grid-column-start: 3;
 }

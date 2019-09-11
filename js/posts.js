@@ -85,7 +85,7 @@ function updateDom() {
       item.appendChild(description);
       title.innerText = res[res.length-1].title;
       description.innerText = res[res.length-1].description;
-      list.appendChild(item);
+      list.insertBefore(item, list.firstChild);
     })
     .catch(err => {
       console.log(err);

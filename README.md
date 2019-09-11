@@ -9,6 +9,10 @@ layout of the site implementing html foundations.
 Tuesday September 10:
 Added extra page for user to create profile now beginning to work
 on the functionality of the site as well as the buttons.
+Wednesday September 11:
+Added User post functionality and Dom manipulation in order to have posts create with same
+design as our original content page.
+
 
 
 

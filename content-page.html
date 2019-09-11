@@ -18,21 +18,26 @@
     </header>
 
     <div class="body-content">
-    <section class="section profile-section">
-      <h2>Profile</h2>
-    </section>
+      <section class="section profile-section">
+        <h2>Profile</h2>
+        <form onSubmit="createPost(event)" class="postForm">
+          <input type="text" class="title" placeholder="title" />
+          <input type="text" class="description" placeholder="description" />
+          <input type="submit" />
+        </form>
+      </section>
 
-    <main>
-      <div class ="post-container">
-        <ul class="posts">
-        </ul>
-      </div>  <!--  post-container end  -->
-    </main>
+      <main>
+        <div class ="post-container">
+          <ul class="posts">
+          </ul>
+        </div>  <!--  post-container end  -->
+      </main>
 
-    <section class="section friends-section">
-      <h2>Friends</h2>
-    </section>
-  </div>
+      <section class="section friends-section">
+        <h2>Friends</h2>
+      </section>
+    </div>
     <footer>
       <p>5 footer</p>
     </footer>

@@ -1,8 +1,8 @@
-function postLogin(event) {
+function postData(event) {
    event.preventDefault();
    const email = document.querySelector('.email');
    const password = document.querySelector('.pw');
-   const username = document.querySelector('.username');
+   // const username = document.querySelector('.username');
    console.log(email.value, password.value)
    fetch('http://thesi.generalassemb.ly:8080/login', {
            method: 'POST',
@@ -15,13 +15,17 @@ function postLogin(event) {
            })
    })
    .then((res) => {
-     //console.log(res)
        return res.json();
    })
    .then((res) => {
      console.log(res)
        localStorage.setItem('user', res.token);
-       // createPost();
+       if(res.httpStatus !== 'BAD_REQUEST') {
+        window.location.href = "content-page.html";
+       }else{
+        localStorage.clear();
+       }
+
    })
    .catch((err) => {
        console.log(err);

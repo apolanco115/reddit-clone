@@ -10,8 +10,7 @@ function getRandomSubset(arr, size) {
 }
 
 
-function listAllPosts(event) {
-  const usersPosts = document.querySelector(".main-col");
+function listSomePosts(event) {
   fetch("http://thesi.generalassemb.ly:8080/post/list", {
     method: "GET",
     headers: {
@@ -22,8 +21,7 @@ function listAllPosts(event) {
       return res.json();
     })
     .then(res => {
-      console.log(res);
-      subRes = getRandomSubset(res, 20);
+      let subRes = getRandomSubset(res, 15);
       const list = document.querySelector(".posts");
       for (let i = 0; i < subRes.length; ++i) {
         const item = document.createElement("li");
@@ -41,4 +39,4 @@ function listAllPosts(event) {
       console.log(err);
     });
 }
-listAllPosts();
+listSomePosts();

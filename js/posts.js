@@ -79,9 +79,6 @@ function updateCommentDom(commentText, postId, commentId) {
   const post = document.getElementById(`${postId}`);
   const list = post.querySelector("ul");
   const item = document.createElement("li");
-  if(!commentId){
-    commentId = Date.now(); 
-  }
   item.id = `commentId${commentId}`
   const text = document.createElement("p");
   item.appendChild(text);
@@ -129,7 +126,10 @@ function addComment(event, postId) {
   })
     .then(res => {
       console.log(res);
-      updateCommentDom(commentText.value, postId);
+      return res.json();
+    })
+    .then(res => {
+      updateCommentDom(commentText.value, postId, res.id);
     })
     .catch(err => {
       console.log(err);
@@ -173,6 +173,7 @@ function createDelComButton(commentId){
 
 }
 
+
 function createDelPostButton(postId){
   const delButton = document.createElement("button");
   delButton.setAttribute("type", "button");
@@ -197,8 +198,10 @@ function delComment(event, commentId) {
       console.log(res);
       if(res.status === 200){
         removeComDom(commentId);
+      }else if(res.status === 400){
+        alert('you can only delete your own comments, buddy.');
       }else{
-        alert('you can only delete your own comments, buddy.')
+        alert('please delete your commennt after a page refresh');
       }
     })
     .catch(err => {

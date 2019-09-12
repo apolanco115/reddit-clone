@@ -1,7 +1,13 @@
 Description
 For our first project, we will be building a front-end for a Reddit-like application where a user, once logged in, can create a post that will show up on every user’s feed and on which any user can comment.
-
 Throughout this project we will be using HTML and CSS, along with complex JavaScript to implement logic.
+
+Our first steps in starting this project was to layout design ideas in which we can execute our plan of a minimalist design while still having good user functionality. We decided to research ideas on how current social media sites implemented their designs and we wanted to have a similar outlook. We drew out the barebones HTML and CSS to be able to envision our design then started to implement the javascript. This was a long process, but through various attempt we were headstrong in achieving our goals.
+
+Some hurdles we approached was including the comment section on our blog posts then also getting the delete comment section on our main content page. We also have a search functionality above our blog posts. Through various attempts we could not get this to work so we decided to just focus on the main content instead.  
+
+
+Our day to day:
 
 
 Monday September 9:
@@ -12,6 +18,9 @@ on the functionality of the site as well as the buttons.
 Wednesday September 11:
 Added User post functionality and Dom manipulation in order to have posts create with same
 design as our original content page.
+Thursday September 12:
+created a comment button to add user input functionality to the main page then had comments posting and updated that to the Dom. Also fixed bugs within CSS homepage.
+
 
 
 

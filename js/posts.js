@@ -51,7 +51,10 @@ function createPost(event) {
   })
     .then(res => {
       console.log(res);
-      updatePostDom(title.value, description.value) ;
+      return res.json();
+    })
+    .then(res => {
+      updatePostDom(title.value, description.value, res.id);
     })
     .catch(err => {
       console.log(err);
@@ -69,7 +72,7 @@ function updatePostDom(postTitle, postDesc, postId) {
   item.appendChild(description);
   title.innerText = postTitle;
   description.innerText = postDesc;
-  list.appendChild(item);
+  list.insertBefore(item, list.firstChild);
   createCommentForm(postId);
   createDelPostButton(postId);
 }

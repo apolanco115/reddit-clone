@@ -178,6 +178,10 @@ function createCommentForm(postId) {
 }
 
 
+function removeComDom(commentId){
+  document.getElementById(`commentId${commentId}`).remove()
+}
+
 
 
 
@@ -192,10 +196,9 @@ function createDelComButton(commentId){
 
 
 
-function delComment(event, postId) {
+function delComment(event, commentId) {
   event.preventDefault();
-  const commentText = document.getElementById(`textField${postId}`);
-  fetch(`http://thesi.generalassemb.ly:8080/comment/${postId}`, {
+  fetch(`http://thesi.generalassemb.ly:8080/comment/${commentId}`, {
     method: "DELETE",
     headers: {
       Authorization: "Bearer " + localStorage.getItem("user"),
@@ -204,11 +207,38 @@ function delComment(event, postId) {
   })
     .then(res => {
       console.log(res);
-      // updateCommentDom(commentText.value, postId);
+      if(res.status === 200){
+        removeComDom(commentId);
+      }else{
+        alert('you can only delete your own comments, buddy.')
+      }
     })
     .catch(err => {
       console.log(err);
     });
+}
+
+function delPost(event, postId){
+  event.preventDefault();
+  fetch(`http://thesi.generalassemb.ly:8080/post/${postId}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("user"),
+      "Content-Type": "application/json"
+    }
+  })
+    .then(res => {
+      console.log(res);
+      if(res.status === 200){
+        removeComDom(commentId);
+      }else{
+        alert('you can only delete your own posts, buddy.')
+      }
+    })
+    .catch(err => {
+      console.log(err);
+    });
+
 }
 
 

@@ -96,11 +96,12 @@ function updatePostDom() {
     });
 }
 
-function updateCommentDom(commentText, postId) {
+function updateCommentDom(commentText, postId, commentId) {
   const post = document.getElementById(`${postId}`);
-  const list = document.createElement("ul");
-  post.appendChild(list);
+  const list = post.querySelector("ul");
+  // post.appendChild(list);
   const item = document.createElement("li");
+  item.id = `commentId${commentId}`
   const text = document.createElement("p");
   item.appendChild(text);
   text.innerText = commentText;
@@ -120,9 +121,10 @@ function viewComments(postId) {
     .then(res => {
       const post = document.getElementById(`${postId}`);
       const list = document.createElement("ul");
+      list.className = ".comments"
       post.appendChild(list);
       for (let i = 0; i < res.length; ++i) {
-        updateCommentDom(res[i].text, postId);
+        updateCommentDom(res[i].text, postId, res[i].id);
       }
     })
     .catch(err => {
@@ -176,4 +178,41 @@ function createCommentForm(postId) {
 
 }
 
+
+function delComment(event, postId) {
+  event.preventDefault();
+  const commentText = document.getElementById(`textField${postId}`);
+  fetch(`http://thesi.generalassemb.ly:8080/comment/${postId}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("user"),
+      "Content-Type": "application/json"
+    }
+  })
+    .then(res => {
+      console.log(res);
+      // updateCommentDom(commentText.value, postId);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+}
+
+function createDelComButton(){
+  const form = document.createElement("form");
+  const textField = document.createElement("input");
+  textField.id = `textField${postId}` 
+  const submitButton = document.createElement("input");  
+
+  form.onsubmit = () => addComment(event, postId);
+  textField.setAttribute("type", "text");
+  textField.setAttribute("placeholder", "comment");
+  form.appendChild(textField);  
+
+  submitButton.type="submit";
+  form.appendChild(submitButton);
+
+  document.getElementById(`${postId}`).appendChild(form);
+
+}
 

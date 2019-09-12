@@ -14,7 +14,7 @@ function postData(event) {
            })
    })
    .then((res) => {
-       return res.json();
+      return res.json();
    })
    .then((res) => {
      console.log(res)

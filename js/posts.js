@@ -96,8 +96,15 @@ function updatePostDom() {
     });
 }
 
-function updateCommentDom() {
-
+function updateCommentDom(commentText, postId) {
+  const post = document.getElementById(`${postId}`);
+  const list = document.createElement("ul");
+  post.appendChild(list);
+  const item = document.createElement("li");
+  const text = document.createElement("p");
+  item.appendChild(text);
+  text.innerText = commentText;
+  list.appendChild(item);
 }
 
 function viewComments(postId) {
@@ -115,11 +122,7 @@ function viewComments(postId) {
       const list = document.createElement("ul");
       post.appendChild(list);
       for (let i = 0; i < res.length; ++i) {
-        const item = document.createElement("li");
-        const text = document.createElement("p");
-        item.appendChild(text);
-        text.innerText = res[i].text;
-        list.appendChild(item);
+        updateCommentDom(res[i].text, postId);
       }
     })
     .catch(err => {
@@ -142,7 +145,7 @@ function addComment(event, postId) {
   })
     .then(res => {
       console.log(res);
-      // updateDom(res);
+      updateCommentDom(commentText.value, postId);
     })
     .catch(err => {
       console.log(err);
@@ -172,8 +175,5 @@ function createCommentForm(postId) {
     document.getElementById(`${postId}`).appendChild(form);
 
 }
-
-// createCommetForm();
-
 
 

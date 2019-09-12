@@ -23,22 +23,8 @@ function listSomePosts(event) {
     .then(res => {
       let subRes = getRandomSubset(res, 15);
       subRes = res;
-      const list = document.querySelector(".posts");
       for (let i = 0; i < 15; ++i) {
-        const item = document.createElement("li");
-        item.className = "post"
-        item.id = subRes[i].id
-        const title = document.createElement("h2");
-        const description = document.createElement("p");
-        item.appendChild(title);
-        item.appendChild(description);
-        title.innerText = subRes[i].title;
-        description.innerText = subRes[i].description;
-        list.appendChild(item);
-        viewComments(subRes[i].id)
-        createCommentForm(subRes[i].id);
-        createDelPostButton(subRes[i].id);
-
+        updatePostDom(subRes[i].title, subRes[i].description, subRes[i].id);
       }
     })
     .catch(err => {
@@ -64,39 +50,31 @@ function createPost(event) {
   })
     .then(res => {
       console.log(res);
-      updatePostDom(res);
+      updatePostDom(title.value, description.value) ;
     })
     .catch(err => {
       console.log(err);
     });
 }
 
-function updatePostDom() {
-  document.querySelector(".postForm").style.display = "block";
-  fetch("http://thesi.generalassemb.ly:8080/user/post", {
-    headers: {
-      Authorization: "Bearer " + localStorage.getItem("user")
-    }
-  })
-    .then(res => {
-      return res.json();
-    })
-    .then(res => {
-      const list = document.querySelector(".posts");
-      const item = document.createElement("li");
-      item.className = "post"
-      const title = document.createElement("h2");
-      const description = document.createElement("p");
-      item.appendChild(title);
-      item.appendChild(description);
-      title.innerText = res[res.length-1].title;
-      description.innerText = res[res.length-1].description;
-      list.insertBefore(item, list.firstChild);
-    })
-    .catch(err => {
-      console.log(err);
-    });
+function updatePostDom(postTitle, postDesc, postId) {
+  const list = document.querySelector(".posts");
+  const item = document.createElement("li");
+  item.className = "post"
+  item.id = postId;
+  const title = document.createElement("h2");
+  const description = document.createElement("p");
+  item.appendChild(title);
+  item.appendChild(description);
+  title.innerText = postTitle;
+  description.innerText = postDesc;
+  list.appendChild(item);
+  viewComments(postId)
+  createCommentForm(postId);
+  createDelPostButton(postId);
+  list.insertBefore(item, list.firstChild);
 }
+
 
 function updateCommentDom(commentText, postId, commentId) {
   const post = document.getElementById(`${postId}`);

@@ -25,6 +25,7 @@ function listSomePosts(event) {
       subRes = res;
       for (let i = 0; i < 15; ++i) {
         updatePostDom(subRes[i].title, subRes[i].description, subRes[i].id);
+        viewComments(subRes[i].id);
       }
     })
     .catch(err => {
@@ -69,10 +70,8 @@ function updatePostDom(postTitle, postDesc, postId) {
   title.innerText = postTitle;
   description.innerText = postDesc;
   list.appendChild(item);
-  viewComments(postId)
   createCommentForm(postId);
   createDelPostButton(postId);
-  list.insertBefore(item, list.firstChild);
 }
 
 
@@ -80,6 +79,9 @@ function updateCommentDom(commentText, postId, commentId) {
   const post = document.getElementById(`${postId}`);
   const list = post.querySelector("ul");
   const item = document.createElement("li");
+  if(!commentId){
+    commentId = Date.now(); 
+  }
   item.id = `commentId${commentId}`
   const text = document.createElement("p");
   item.appendChild(text);
@@ -132,12 +134,6 @@ function addComment(event, postId) {
     .catch(err => {
       console.log(err);
     });
-}
-
-
-function whatsMyId(event){
-  event.preventDefault();
-  alert(event.target.parentNode.id);
 }
 
 function createCommentForm(postId) {

@@ -37,6 +37,8 @@ function listSomePosts(event) {
         list.appendChild(item);
         viewComments(subRes[i].id)
         createCommentForm(subRes[i].id);
+        createDelPostButton(subRes[i].id);
+
       }
     })
     .catch(err => {
@@ -182,6 +184,9 @@ function removeComDom(commentId){
   document.getElementById(`commentId${commentId}`).remove()
 }
 
+function removePostDom(postId){
+  document.getElementById(`postId${postId}`).remove()
+}
 
 
 
@@ -191,6 +196,15 @@ function createDelComButton(commentId){
   delButton.innerText = 'delete comment';
   delButton.onclick= () => delComment(event, commentId);
   document.getElementById(`commentId${commentId}`).appendChild(delButton);
+
+}
+
+function createDelPostButton(postId){
+  const delButton = document.createElement("button");
+  delButton.setAttribute("type", "button");
+  delButton.innerText = 'delete post';
+  delButton.onclick= () => delPost(event, postId);
+  document.getElementById(`${postId}`).appendChild(delButton);
 
 }
 
@@ -218,6 +232,7 @@ function delComment(event, commentId) {
     });
 }
 
+
 function delPost(event, postId){
   event.preventDefault();
   fetch(`http://thesi.generalassemb.ly:8080/post/${postId}`, {
@@ -240,6 +255,3 @@ function delPost(event, postId){
     });
 
 }
-
-
-

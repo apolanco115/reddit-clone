@@ -2,7 +2,6 @@ function postData(event) {
    event.preventDefault();
    const email = document.querySelector('.email');
    const password = document.querySelector('.pw');
-   // const username = document.querySelector('.username');
    console.log(email.value, password.value)
    fetch('http://thesi.generalassemb.ly:8080/login', {
            method: 'POST',

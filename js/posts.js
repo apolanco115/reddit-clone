@@ -22,10 +22,12 @@ function listSomePosts(event) {
     })
     .then(res => {
       let subRes = getRandomSubset(res, 15);
+      subRes = res;
       const list = document.querySelector(".posts");
-      for (let i = 0; i < subRes.length; ++i) {
+      for (let i = 0; i < 15; ++i) {
         const item = document.createElement("li");
         item.className = "post"
+        item.id = subRes[i].id
         const title = document.createElement("h2");
         const description = document.createElement("p");
         item.appendChild(title);
@@ -33,6 +35,8 @@ function listSomePosts(event) {
         title.innerText = subRes[i].title;
         description.innerText = subRes[i].description;
         list.appendChild(item);
+        viewComments(subRes[i].id)
+        createCommentForm(subRes[i].id);
       }
     })
     .catch(err => {
@@ -58,14 +62,14 @@ function createPost(event) {
   })
     .then(res => {
       console.log(res);
-      updateDom(res);
+      updatePostDom(res);
     })
     .catch(err => {
       console.log(err);
     });
 }
 
-function updateDom() {
+function updatePostDom() {
   document.querySelector(".postForm").style.display = "block";
   fetch("http://thesi.generalassemb.ly:8080/user/post", {
     headers: {
@@ -91,3 +95,85 @@ function updateDom() {
       console.log(err);
     });
 }
+
+function updateCommentDom() {
+
+}
+
+function viewComments(postId) {
+  fetch(`http://thesi.generalassemb.ly:8080/post/${postId}/comment`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+    .then(res => {
+      return res.json();
+    })
+    .then(res => {
+      const post = document.getElementById(`${postId}`);
+      const list = document.createElement("ul");
+      post.appendChild(list);
+      for (let i = 0; i < res.length; ++i) {
+        const item = document.createElement("li");
+        const text = document.createElement("p");
+        item.appendChild(text);
+        text.innerText = res[i].text;
+        list.appendChild(item);
+      }
+    })
+    .catch(err => {
+      console.log(err);
+    });
+}
+
+function addComment(event, postId) {
+  event.preventDefault();
+  const commentText = document.getElementById(`textField${postId}`);
+  fetch(`http://thesi.generalassemb.ly:8080/comment/${postId}`, {
+    method: "POST",
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("user"),
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      text: commentText.value,
+    })
+  })
+    .then(res => {
+      console.log(res);
+      // updateDom(res);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+}
+
+
+function whatsMyId(event){
+  event.preventDefault();
+  alert(event.target.parentNode.id);
+}
+
+function createCommentForm(postId) {
+    const form = document.createElement("form");
+    const textField = document.createElement("input");
+    textField.id = `textField${postId}` 
+    const submitButton = document.createElement("input");  
+
+    form.onsubmit = () => addComment(event, postId);
+    textField.setAttribute("type", "text");
+    textField.setAttribute("placeholder", "comment");
+    form.appendChild(textField);  
+
+    submitButton.type="submit";
+    form.appendChild(submitButton);
+
+    document.getElementById(`${postId}`).appendChild(form);
+
+}
+
+// createCommetForm();
+
+
+

@@ -99,13 +99,13 @@ function updatePostDom() {
 function updateCommentDom(commentText, postId, commentId) {
   const post = document.getElementById(`${postId}`);
   const list = post.querySelector("ul");
-  // post.appendChild(list);
   const item = document.createElement("li");
   item.id = `commentId${commentId}`
   const text = document.createElement("p");
   item.appendChild(text);
   text.innerText = commentText;
   list.appendChild(item);
+  createDelComButton(commentId);
 }
 
 function viewComments(postId) {
@@ -175,8 +175,21 @@ function createCommentForm(postId) {
     form.appendChild(submitButton);
 
     document.getElementById(`${postId}`).appendChild(form);
+}
+
+
+
+
+
+function createDelComButton(commentId){
+  const delButton = document.createElement("button");
+  delButton.setAttribute("type", "button");
+  delButton.innerText = 'delete comment';
+  delButton.onclick= () => delComment(event, commentId);
+  document.getElementById(`commentId${commentId}`).appendChild(delButton);
 
 }
+
 
 
 function delComment(event, postId) {
@@ -198,21 +211,5 @@ function delComment(event, postId) {
     });
 }
 
-function createDelComButton(){
-  const form = document.createElement("form");
-  const textField = document.createElement("input");
-  textField.id = `textField${postId}` 
-  const submitButton = document.createElement("input");  
 
-  form.onsubmit = () => addComment(event, postId);
-  textField.setAttribute("type", "text");
-  textField.setAttribute("placeholder", "comment");
-  form.appendChild(textField);  
-
-  submitButton.type="submit";
-  form.appendChild(submitButton);
-
-  document.getElementById(`${postId}`).appendChild(form);
-
-}
 

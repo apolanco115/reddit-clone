@@ -6,6 +6,11 @@ Our first steps in starting this project was to layout design ideas in which we 
 
 Some hurdles we approached was including the comment section on our blog posts then also getting the delete comment section on our main content page. We also have a search functionality above our blog posts. Through various attempts we could not get this to work so we decided to just focus on the main content instead.  
 
+Technologies used:
+1. HTML
+2. CSS
+3. Javascript
+
 
 Our day to day:
 
@@ -22,7 +27,10 @@ Thursday September 12:
 created a comment button to add user input functionality to the main page then had comments posting and updated that to the Dom. Also fixed bugs within CSS homepage.
 
 
+How to Use
+You start at the index page and either enter your username and password if you are a returning user or you click the signup button where you are taken to a registration page to fill out the required information then you automatically shown to our content-page including the ability to make a make a blog post as well as add a comment or delete it on other posts.
 
+ *wireframes included in a file on Github* 
 
 
 

@@ -1,5 +1,5 @@
 body {
-  background-color: #ccdfed;
+  background-color: #2b2e35;/*#ccdfed;*/
   
 }
 h1 {
@@ -19,7 +19,7 @@ h1 {
   grid-column: 1 / 4;
   height: 100%;
   align-items: center;
-  background-color: #2f3133;
+  background-color: #191e23;
   display: flex;
   justify-content: space-around;
 }
@@ -40,4 +40,89 @@ h1 {
 
 .logo img{
   width: 100%;
+}
+
+
+input[type=text], input[type=password],  [type=email] {
+/*  width: 100%;
+  padding: 5px;
+  display: inline-block;
+  border: none;*/
+  background: #cccccc;
+  font-family: 'Raleway', sans-serif;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+  font-family: 'Raleway', sans-serif;
+}
+
+/*button {
+  background-color: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+  opacity: 0.9;
+  height:100%;
+}
+
+button:hover {
+  opacity:1;
+}*/
+
+/* Float cancel and signup buttons and add an equal width */
+.container {
+  padding: 16px;
+}
+
+.container > button {
+  height: 100px; 
+}
+
+/* sign-up-box (background) */
+.sign-up-box {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: #474e5d;
+  padding-top: 50px;
+}
+
+/* signup-content box */
+.sign-up-box-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+  font-family: 'Raleway', sans-serif;
+}
+.box-style > input {
+  color: black ;
+  margin: 1% 1% 1% 1%;
+}
+.box-style {
+  padding 10px;
+  padding-top: 1%;
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  right: 35px;
+  top: 15px;
+  font-size: 40px;
+  font-weight: bold;
+  color: #f1f1f1;
+}
+
+
+.close:hover,
+.close:focus {
+  color: #f44336;
+  cursor: pointer;
 }

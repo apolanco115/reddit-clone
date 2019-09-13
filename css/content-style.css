@@ -116,3 +116,7 @@ footer > p {
 .friends-section {
   grid-column-start: 3;
 }
+
+.footer > p {
+  font-style: italic;
+}

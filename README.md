@@ -25,12 +25,16 @@ Added User post functionality and Dom manipulation in order to have posts create
 design as our original content page.
 Thursday September 12:
 created a comment button to add user input functionality to the main page then had comments posting and updated that to the Dom. Also fixed bugs within CSS homepage.
+Friday September 13:
+added login functionality to login page; cleaned up post generator javascript code, cleaned up code,  added post creation functionality to content-page, new posts appear at top of page, added add comment functionality to all posts, adding comments now updates DOM automatically, fixed appending ul for each li element in comments", delete comment functionality added, delete comment from DOM without refresh,
+added delete post functionality, delete post button shows up on new posts, fixed non unique comment ids
+ability to delete comment after adding added, new posts get the API created id for the post
 
 
 How to Use
 You start at the index page and either enter your username and password if you are a returning user or you click the signup button where you are taken to a registration page to fill out the required information then you automatically shown to our content-page including the ability to make a make a blog post as well as add a comment or delete it on other posts.
 
- *wireframes included in a file on Github* 
+Wireframe pictures included in wire frame folder. 
 
 
 

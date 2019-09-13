@@ -22,7 +22,6 @@ function listSomePosts(event) {
     })
     .then(res => {
       let subRes = getRandomSubset(res, 15);
-      subRes = res;
       for (let i = 0; i < 15; ++i) {
         updatePostDom(subRes[i].title, subRes[i].description, subRes[i].id);
         viewComments(subRes[i].id);

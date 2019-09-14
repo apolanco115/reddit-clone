@@ -2,9 +2,9 @@ body {
   background-color: #2b2e35;/*#ccdfed;*/
   
 }
-h1 {
+/*h1 {
   font-family: 'Oswald', sans-serif;
-}
+}*/
 .page-container{
   height: 100vh;
   display: grid;
@@ -20,15 +20,53 @@ h1 {
   height: 100%;
   align-items: center;
   background-color: #191e23;
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(3, calc(100%/3));
 }
 
 
 .page-title {
-  font-family: Sans-Serif;
+  grid-column-end: 2;
+  justify-self: end;
+  font-family: 'Oswald';
   font-size: 2em;
   color: #ffffff;
+}
+
+.login-signUp {
+  grid-column-start: 3;
+  justify-self: start;
+  display: flex;
+}
+
+.text-input:focus{
+  background: #dddddd;
+}
+
+.login-button{
+
+}
+
+.sign-up-button {
+  font-size: 100%;
+  font-family: 'Raleway', sans-serif;
+  color: #556e87; 
+  background: none;
+  border: none;
+  padding: 0;
+  margin-left: 0.5em;
+  transition-duration: 0.4s;
+
+}
+
+.sign-up-button:hover {
+  color: white;
+}
+
+.text-input {
+  background: #cccccc;
+  outline: none;
+  font-family: 'Raleway', sans-serif;
 }
 
 .logo {
@@ -36,28 +74,48 @@ h1 {
   grid-row-start: 2;
   display: flex;
   justify-content: center;
+  position: absolute;
+  animation: bounce 2s forwards;
+
+
 }
 
 .logo img{
-  width: 100%;
+  width: calc(100%/3);
 }
 
 
-input[type=text], input[type=password],  [type=email] {
-/*  width: 100%;
-  padding: 5px;
-  display: inline-block;
-  border: none;*/
-  background: #cccccc;
-  font-family: 'Raleway', sans-serif;
-}
+@keyframes bounce {
+  0% {
+    top: -500px;
+    animation-timing-function: ease-in;
+  }
+  16.66% {
+    top: 200px;
+    animation-timing-function: ease-out;
+  }
+  33.33% {
+    top: 50px;
+    animation-timing-function: ease-in;
+  }
+  50% {
+    top: 200px;
+    animation-timing-function: ease-out;
+  }
+  66.66% {
+    top: 125px;
+    animation-timing-function: ease-in;
+  }
+  83.33% {
+    top: 200px;
+    animation-timing-function: ease-out;
+  }
 
-input[type=text]:focus, input[type=password]:focus {
-  background-color: #ddd;
-  outline: none;
-  font-family: 'Raleway', sans-serif;
+  100% {
+    top: 200px;
+    animation-timing-function: ease-out;
+  }
 }
-
 
 /* Float cancel and signup buttons and add an equal width */
 .container {
@@ -68,7 +126,6 @@ input[type=text]:focus, input[type=password]:focus {
   height: 100px; 
 }
 
-/* sign-up-box (background) */
 .sign-up-box {
   display: none;
   position: fixed;
@@ -81,12 +138,11 @@ input[type=text]:focus, input[type=password]:focus {
   padding-top: 50px;
 }
 
-/* signup-content box */
 .sign-up-box-content {
   background-color: #fefefe;
-  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  margin: 5% auto 15% auto;
   border: 1px solid #888;
-  width: 50%; /* Could be more or less, depending on screen size */
+  width: 50%; 
   font-family: 'Raleway', sans-serif;
 }
 .box-style > input {
@@ -98,7 +154,7 @@ input[type=text]:focus, input[type=password]:focus {
   padding-top: 1%;
 }
 
-/* The Close Button */
+/* The Close Button 
 .close {
   position: absolute;
   right: 35px;
@@ -113,4 +169,4 @@ input[type=text]:focus, input[type=password]:focus {
 .close:focus {
   color: #f44336;
   cursor: pointer;
-}
+}*/

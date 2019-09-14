@@ -1,3 +1,5 @@
+
+//takes in an array and returns an shuffled version of specified size.
 function getRandomSubset(arr, size) {
     let shuffled = arr.slice(0), i = arr.length, min = i - size, temp, index;
     while (i-- > min) {
@@ -9,7 +11,7 @@ function getRandomSubset(arr, size) {
     return shuffled.slice(min);
 }
 
-
+//queries api for list of all posts
 function listSomePosts(event) {
   fetch("http://thesi.generalassemb.ly:8080/post/list", {
     method: "GET",
@@ -33,6 +35,7 @@ function listSomePosts(event) {
 }
 listSomePosts();
 
+//queries the api for creating post
 function createPost(event) {
   event.preventDefault();
   const title = document.querySelector(".title");
@@ -59,11 +62,13 @@ function createPost(event) {
       console.log(err);
     });
 }
-
+//updates html to display a post
 function updatePostDom(postTitle, postDesc, postId) {
   const list = document.querySelector(".posts");
   const item = document.createElement("li");
-  item.className = "post"
+  const comList = document.createElement("ul");
+  comList.className = ".comments";
+  item.className = "post";
   item.id = postId;
   const title = document.createElement("h2");
   const description = document.createElement("p");
@@ -74,9 +79,10 @@ function updatePostDom(postTitle, postDesc, postId) {
   list.insertBefore(item, list.firstChild);
   createCommentForm(postId);
   createDelPostButton(postId);
+  item.appendChild(comList);
 }
 
-
+//updates dom to display comments
 function updateCommentDom(commentText, postId, commentId) {
   const post = document.getElementById(`${postId}`);
   const list = post.querySelector("ul");
@@ -89,30 +95,7 @@ function updateCommentDom(commentText, postId, commentId) {
   createDelComButton(commentId);
 }
 
-function viewComments(postId) {
-  fetch(`http://thesi.generalassemb.ly:8080/post/${postId}/comment`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json"
-    }
-  })
-    .then(res => {
-      return res.json();
-    })
-    .then(res => {
-      const post = document.getElementById(`${postId}`);
-      const list = document.createElement("ul");
-      list.className = ".comments"
-      post.appendChild(list);
-      for (let i = 0; i < res.length; ++i) {
-        updateCommentDom(res[i].text, postId, res[i].id);
-      }
-    })
-    .catch(err => {
-      console.log(err);
-    });
-}
-
+//queries api to add comment
 function addComment(event, postId) {
   event.preventDefault();
   const commentText = document.getElementById(`textField${postId}`);
@@ -138,16 +121,40 @@ function addComment(event, postId) {
     });
 }
 
+//queries api for ccomments on postId
+function viewComments(postId) {
+  fetch(`http://thesi.generalassemb.ly:8080/post/${postId}/comment`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+    .then(res => {
+      return res.json();
+    })
+    .then(res => {
+      for (let i = 0; i < res.length; ++i) {
+        updateCommentDom(res[i].text, postId, res[i].id);
+      }
+    })
+    .catch(err => {
+      console.log(err);
+    });
+}
+
+
+
+//creates a form to enter and submit comments on posts
 function createCommentForm(postId) {
     const form = document.createElement("form");
     const textField = document.createElement("input");
     textField.id = `textField${postId}` 
     const submitButton = document.createElement("input");  
-
     form.onsubmit = () => addComment(event, postId);
     textField.setAttribute("type", "text");
     textField.setAttribute("placeholder", "comment");
-    form.appendChild(textField);  
+    form.appendChild(textField);
+
 
     submitButton.type="submit";
     form.appendChild(submitButton);
@@ -155,17 +162,18 @@ function createCommentForm(postId) {
     document.getElementById(`${postId}`).appendChild(form);
 }
 
-
+//removes comment from dom
 function removeComDom(commentId){
   document.getElementById(`commentId${commentId}`).remove()
 }
 
+//removes post from dom
 function removePostDom(postId){
   document.getElementById(`postId${postId}`).remove()
 }
 
 
-
+//creates delete button comments
 function createDelComButton(commentId){
   const delButton = document.createElement("button");
   delButton.setAttribute("type", "button");
@@ -175,7 +183,7 @@ function createDelComButton(commentId){
 
 }
 
-
+//creates delete post button
 function createDelPostButton(postId){
   const delButton = document.createElement("button");
   delButton.setAttribute("type", "button");
@@ -186,7 +194,7 @@ function createDelPostButton(postId){
 }
 
 
-
+//quiereis the api to delete comment
 function delComment(event, commentId) {
   event.preventDefault();
   fetch(`http://thesi.generalassemb.ly:8080/comment/${commentId}`, {
@@ -211,7 +219,7 @@ function delComment(event, commentId) {
     });
 }
 
-
+//quiereis the api to delete post
 function delPost(event, postId){
   event.preventDefault();
   fetch(`http://thesi.generalassemb.ly:8080/post/${postId}`, {

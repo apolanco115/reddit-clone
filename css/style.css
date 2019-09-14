@@ -1,10 +1,8 @@
 body {
-  background-color: #2b2e35;/*#ccdfed;*/
+  background-color: #2b2e35;
   
 }
-/*h1 {
-  font-family: 'Oswald', sans-serif;
-}*/
+
 .page-container{
   height: 100vh;
   display: grid;
@@ -28,9 +26,9 @@ body {
 .page-title {
   grid-column-end: 2;
   justify-self: end;
-  font-family: 'Oswald';
+  font-family: 'Oswald', sans-serif;
   font-size: 2em;
-  color: #ffffff;
+  color: #E1E2EF;
 }
 
 .login-signUp {
@@ -39,12 +37,29 @@ body {
   display: flex;
 }
 
+.text-input {
+  background: #cccccc;
+  outline: none;
+  font-family: 'Raleway', sans-serif;
+}
 .text-input:focus{
-  background: #dddddd;
+  background: #E1E2EF;
 }
 
-.login-button{
+.login-button {
+  color: #E1E2EF;
+  text-transform: uppercase;
+  background: #2b2e35;
+  padding-top: .2em;
+  border: .1em solid #E1E2EF;
+  transition: all 0.4s ease 0s;
+}
 
+.login-button:hover {
+color: #2b2e35;
+background: #E1E2EF;
+/*border-color: #f6b93b;*/
+transition: all 0.4s ease 0s;
 }
 
 .sign-up-button {
@@ -60,13 +75,7 @@ body {
 }
 
 .sign-up-button:hover {
-  color: white;
-}
-
-.text-input {
-  background: #cccccc;
-  outline: none;
-  font-family: 'Raleway', sans-serif;
+  color: #E1E2EF;
 }
 
 .logo {
@@ -118,55 +127,58 @@ body {
 }
 
 /* Float cancel and signup buttons and add an equal width */
-.container {
-  padding: 16px;
-}
-
-.container > button {
-  height: 100px; 
-}
 
 .sign-up-box {
   display: none;
   position: fixed;
-  left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;
   background-color: #474e5d80;
-  padding-top: 50px;
 }
 
 .sign-up-box-content {
-  background-color: #fefefe;
+  background-color: #191e23;
   margin: 5% auto 15% auto;
-  border: 1px solid #888;
-  width: 50%; 
+  border-radius: 10px;
   font-family: 'Raleway', sans-serif;
-}
-.box-style > input {
-  color: black ;
-  margin: 1% 1% 1% 1%;
-}
-.box-style {
-  padding 10px;
-  padding-top: 1%;
+  width: 15em;
+  height: 10em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* The Close Button 
-.close {
-  position: absolute;
-  right: 35px;
-  top: 15px;
-  font-size: 40px;
-  font-weight: bold;
-  color: #f1f1f1;
+.motto{
+  margin-top: 0.4em;
+  margin-bottom: 0.3em;
+  text-align: center;
+  color: #E1E2EF;
 }
 
+.sign-up-form-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-.close:hover,
-.close:focus {
-  color: #f44336;
-  cursor: pointer;
-}*/
+}
+
+.sign-up-form-content li{
+  margin-bottom: 0.4em;
+}
+
+.signUp-button {
+
+  color: #E1E2EF;
+  text-transform: uppercase;
+  background: #2b2e35;
+  padding-top: .2em;
+  border: .1em solid #E1E2EF;
+  transition: all 0.4s ease 0s;
+}
+
+.signUp-button:hover {
+color: #2b2e35;
+background: #E1E2EF;
+transition: all 0.4s ease 0s;
+}

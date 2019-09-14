@@ -29,19 +29,19 @@
     </div>
 
     <div class="sign-up-box">
-      <span onclick="document.querySelector('.sign-up-box').style.display='none'" class="close" title="Close">&times;</span>
+      <span onclick="document.querySelector('.sign-up-box').style.display='none'" class="close" title="Close"></span>
+
       <form onSubmit="signUp(event)" class="sign-up-box-content">
-        <div class="container">
+        <div class="motto">
           <h1>Sign Up!</h1>
           <p>It's not reddit; we promise.</p>
-
-          <div class = "box-style">
-            <input type="text" class="sign-up-email text-input" placeholder="email" required />
-            <input type="password" class="sign-up-password text-input" placeholder="password" required/>
-            <input type="text" class="username text-input" placeholder="username" required/>
-            <input type="submit" value="sign up" />
-          </div>
         </div>
+        <ul class="sign-up-form-content">
+          <li><input type="text" class="sign-up-email text-input" placeholder="email" required /></li>
+          <li><input type="password" class="sign-up-password text-input" placeholder="password" required/>
+          <li><input type="text" class="username text-input" placeholder="username" required/></li>
+          <li><input type="submit" value="sign up" / class="signUp-button"></li>
+        </ul>
       </form>
     </div>
 

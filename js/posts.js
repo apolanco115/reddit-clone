@@ -70,15 +70,15 @@ function updatePostDom(postTitle, postDesc, postId) {
   comList.className = ".comments";
   item.className = "post";
   item.id = postId;
+  list.insertBefore(item, list.firstChild);
+  createDelPostButton(postId);
   const title = document.createElement("h2");
   const description = document.createElement("p");
   item.appendChild(title);
   item.appendChild(description);
   title.innerText = postTitle;
   description.innerText = postDesc;
-  list.insertBefore(item, list.firstChild);
   createCommentForm(postId);
-  createDelPostButton(postId);
   item.appendChild(comList);
 }
 
@@ -87,7 +87,8 @@ function updateCommentDom(commentText, postId, commentId) {
   const post = document.getElementById(`${postId}`);
   const list = post.querySelector("ul");
   const item = document.createElement("li");
-  item.id = `commentId${commentId}`
+  item.id = `commentId${commentId}`;
+  item.className = ".comment";
   const text = document.createElement("p");
   item.appendChild(text);
   text.innerText = commentText;
@@ -148,7 +149,8 @@ function viewComments(postId) {
 function createCommentForm(postId) {
     const form = document.createElement("form");
     const textField = document.createElement("input");
-    textField.id = `textField${postId}` 
+    textField.id = `textField${postId}`
+    textField.required = true; 
     const submitButton = document.createElement("input");  
     form.onsubmit = () => addComment(event, postId);
     textField.setAttribute("type", "text");
@@ -177,7 +179,9 @@ function removePostDom(postId){
 function createDelComButton(commentId){
   const delButton = document.createElement("button");
   delButton.setAttribute("type", "button");
-  delButton.innerText = 'delete comment';
+  delButton.className = 'button-style';
+  delButton.className += ' del-com';
+  delButton.innerHTML = '&times;';
   delButton.onclick= () => delComment(event, commentId);
   document.getElementById(`commentId${commentId}`).appendChild(delButton);
 
@@ -187,7 +191,9 @@ function createDelComButton(commentId){
 function createDelPostButton(postId){
   const delButton = document.createElement("button");
   delButton.setAttribute("type", "button");
-  delButton.innerText = 'delete post';
+  delButton.className = 'button-style';
+  delButton.className += ' del-post';
+  delButton.innerHTML = '&times;';
   delButton.onclick= () => delPost(event, postId);
   document.getElementById(`${postId}`).appendChild(delButton);
 
@@ -210,8 +216,6 @@ function delComment(event, commentId) {
         removeComDom(commentId);
       }else if(res.status === 400){
         alert('you can only delete your own comments, buddy.');
-      }else{
-        alert('please delete your commennt after a page refresh');
       }
     })
     .catch(err => {

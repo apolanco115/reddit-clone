@@ -3,9 +3,8 @@ body {
   height: 100vh;
   width: 100vw;
   background-color: #2b2e35;
-/*  grid-template-rows: 5% 1fr 5%;
-  grid-template-columns: 20% 2fr 20%;*/
   font-family: 'Raleway', sans-serif;
+
 }
 
 header {
@@ -29,7 +28,7 @@ header {
 
 .home-link {
   grid-column-end: 2;
-  color: #E1E2EF;
+  color: #e1e2ef;
   font-family: 'Oswald', sans-serif;
   justify-self: center;
   align-self: center;
@@ -45,7 +44,7 @@ header {
 }
 
 .home-link a:visited{
-  color: #E1E2EF;
+  color: #e1e2ef;
 }
 
 .search-bar{
@@ -56,7 +55,7 @@ header {
 }
 
 h2 {
-  color: #E1E2EF;
+  color: #e1e2ef;
 }
 
 main {
@@ -68,29 +67,96 @@ ul {
   list-style-type: none;
  }
 
-.post {
-  background-color: #161616; /* #191e23;*/
-  margin: 1em 5em;
-  border-radius: 10px;
+.posts{
+padding-left: 0;
 }
 
-.post  p {
-  background-color: #E1E2EF;
-  color: #02020A;
-  text-align: center;
+
+.post {
+  background-color: #191e23;
+  margin: 1em 5em;
+  border-radius: 10px;
+  display: grid;
+  justify-items: center;
 }
 
 .post h2 {
-    text-align: center;
+  margin-top: 0;
+  margin-bottom: 0.2em;
+  text-align: center;
+  text-decoration: underline;
+  font-weight: 400;
+  font-size: 2em;
 }
 
-.post-buttons{
-  margin: 0 160px;
+.post p {
+  margin-top: 0;
+  color: #e1e2ef;
+  width: 75%;
+  font-size: 1em;
+  text-align: center;
+}
+
+.post:hover {
+ border: .05em solid #e1e2ef;
+ transition: all 0.4s ease 0s;
+}
+
+/*.comment {
+  margin-top: 0;
+  background: #e1e2ef 
+  color: #191e23;
+  width: 75%;
+  font-size: 0.5em;
+  text-align: center;
+}*/
+
+.post ul li {
+  margin: 0;
+  display: flex;
+}
+
+.post ul li p{
+  margin: 0;
+}
+
+.button-style {
+  color: #e1e2ef;
+  text-transform: uppercase;
+  background: #2b2e35;
+  padding-top: .2em;
+  border: .1em solid #e1e2ef;
+  transition: all 0.4s ease 0s;
+}
+
+.button-style:hover {
+  color: #2b2e35;
+  background: #e1e2ef;
+  transition: all 0.4s ease 0s;
+}
+
+.del-post {
+  justify-self: end;
+  margin-top: 0.3em;
+  margin-right: 0.3em;
+  border-style: none;
+  border-radius: 50%;
+  background: #191e23;
+
+}
+
+.del-com {
+  justify-self: end;
+  margin-top: 0.3em;
+  margin-left: 0.3em;
+  margin-bottom: 0.3em;
+  border-style: none;
+  background: #191e23;
 }
 
 footer {
   grid-row: 3;
-  grid-column: 1 /4;
+  grid-column: 1 / 4;
   background-color: #02020A;
 }
 
@@ -99,7 +165,6 @@ footer > p {
   color: #E1E2EF;
 }
 .section {
-/*  background-color: #02020A; */
   margin: 1em;
 
 }

@@ -23,6 +23,7 @@ function postData(event) {
         window.location.href = "content-page.html";
        }else{
         localStorage.clear();
+        alert('please enter valid user information');
        }
 
    })

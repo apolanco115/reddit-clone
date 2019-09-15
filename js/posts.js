@@ -1,3 +1,5 @@
+
+//takes in an array and returns an shuffled version of specified size.
 function getRandomSubset(arr, size) {
     let shuffled = arr.slice(0), i = arr.length, min = i - size, temp, index;
     while (i-- > min) {
@@ -9,7 +11,7 @@ function getRandomSubset(arr, size) {
     return shuffled.slice(min);
 }
 
-
+//queries api for list of all posts
 function listSomePosts(event) {
   fetch("http://thesi.generalassemb.ly:8080/post/list", {
     method: "GET",
@@ -23,6 +25,7 @@ function listSomePosts(event) {
     .then(res => {
       let subRes = getRandomSubset(res, 15);
       for (let i = 0; i < 15; ++i) {
+        listRecentUsers(subRes[i].user.username);
         updatePostDom(subRes[i].title, subRes[i].description, subRes[i].id);
         viewComments(subRes[i].id);
       }
@@ -31,8 +34,30 @@ function listSomePosts(event) {
       console.log(err);
     });
 }
-listSomePosts();
+window.onload = listSomePosts(event);
+window.onload = loadUserAvatar(event);
 
+function loadUserAvatar(event){
+  const av = document.querySelector(".av-img");
+  const randString = Math.random().toString(36).slice(2);
+  av.setAttribute("src", `http://api.adorable.io/avatars/285/[${randString}].png`)
+}
+
+function listRecentUsers(user){
+  const list = document.querySelector(".recent-users");
+  const av = document.createElement("img");
+  const userText = document.createElement("p");
+  const randString = Math.random().toString(36).slice(2);
+  av.setAttribute("src", `http://api.adorable.io/avatars/285/[${randString}].png`)
+  item = document.createElement("li");
+  item.appendChild(av);
+  userText.innerText = user;
+  item.appendChild(userText);
+  list.appendChild(item)
+}
+
+
+//queries the api for creating post
 function createPost(event) {
   event.preventDefault();
   const title = document.querySelector(".title");
@@ -54,34 +79,40 @@ function createPost(event) {
     })
     .then(res => {
       updatePostDom(title.value, description.value, res.id);
+      title.value='';
+      description.value='';
     })
     .catch(err => {
       console.log(err);
     });
 }
-
+//updates html to display a post
 function updatePostDom(postTitle, postDesc, postId) {
   const list = document.querySelector(".posts");
   const item = document.createElement("li");
-  item.className = "post"
+  const comList = document.createElement("ul");
+  comList.className = ".comments";
+  item.className = "post";
   item.id = postId;
+  list.insertBefore(item, list.firstChild);
+  createDelPostButton(postId);
   const title = document.createElement("h2");
   const description = document.createElement("p");
   item.appendChild(title);
   item.appendChild(description);
   title.innerText = postTitle;
   description.innerText = postDesc;
-  list.insertBefore(item, list.firstChild);
+  item.appendChild(comList);
   createCommentForm(postId);
-  createDelPostButton(postId);
 }
 
-
+//updates dom to display comments
 function updateCommentDom(commentText, postId, commentId) {
   const post = document.getElementById(`${postId}`);
   const list = post.querySelector("ul");
   const item = document.createElement("li");
-  item.id = `commentId${commentId}`
+  item.id = `commentId${commentId}`;
+  item.className = ".comment";
   const text = document.createElement("p");
   item.appendChild(text);
   text.innerText = commentText;
@@ -89,30 +120,7 @@ function updateCommentDom(commentText, postId, commentId) {
   createDelComButton(commentId);
 }
 
-function viewComments(postId) {
-  fetch(`http://thesi.generalassemb.ly:8080/post/${postId}/comment`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json"
-    }
-  })
-    .then(res => {
-      return res.json();
-    })
-    .then(res => {
-      const post = document.getElementById(`${postId}`);
-      const list = document.createElement("ul");
-      list.className = ".comments"
-      post.appendChild(list);
-      for (let i = 0; i < res.length; ++i) {
-        updateCommentDom(res[i].text, postId, res[i].id);
-      }
-    })
-    .catch(err => {
-      console.log(err);
-    });
-}
-
+//queries api to add comment
 function addComment(event, postId) {
   event.preventDefault();
   const commentText = document.getElementById(`textField${postId}`);
@@ -132,61 +140,115 @@ function addComment(event, postId) {
     })
     .then(res => {
       updateCommentDom(commentText.value, postId, res.id);
+      commentText.value='';
     })
     .catch(err => {
       console.log(err);
     });
 }
 
+//queries api for ccomments on postId
+function viewComments(postId) {
+  fetch(`http://thesi.generalassemb.ly:8080/post/${postId}/comment`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+    .then(res => {
+      return res.json();
+    })
+    .then(res => {
+      for (let i = 0; i < res.length; ++i) {
+        updateCommentDom(res[i].text, postId, res[i].id);
+      }
+    })
+    .catch(err => {
+      console.log(err);
+    });
+}
+
+
+
+//creates a form to enter and submit comments on posts
 function createCommentForm(postId) {
     const form = document.createElement("form");
-    const textField = document.createElement("input");
-    textField.id = `textField${postId}` 
+    const list = document.createElement("ul")
+    const item0 = document.createElement("li")
+    const item1 = document.createElement("li")
+    const textField = document.createElement("textarea");
+    textField.id = `textField${postId}`
+    textField.className = "textbox";
+    textField.className += " comment-box";
+    textField.required = true; 
     const submitButton = document.createElement("input");  
-
     form.onsubmit = () => addComment(event, postId);
-    textField.setAttribute("type", "text");
+    textField.setAttribute("rows", "5");
+    textField.setAttribute("type", "30");
     textField.setAttribute("placeholder", "comment");
-    form.appendChild(textField);  
+    item0.appendChild(textField);
+
 
     submitButton.type="submit";
-    form.appendChild(submitButton);
+    submitButton.className = "button-style";
+    submitButton.className += " create-com";
+    submitButton.value = `\u002B comment`;
+    item1.appendChild(submitButton);
+    list.appendChild(item0);
+    list.appendChild(item1);
+    form.appendChild(list);
 
     document.getElementById(`${postId}`).appendChild(form);
 }
 
+function createCommentButton(postId){
+  const delButton = document.createElement("button");
+  delButton.setAttribute("type", "button");
+  delButton.className = 'button-style';
+  delButton.className += ' create-com';
+  delButton.innerHTML = `\u002B comment`;
+  delButton.onclick= () => delPost(event, postId);
+  document.getElementById(`${postId}`).appendChild(delButton);
 
+}
+
+//removes comment from dom
 function removeComDom(commentId){
   document.getElementById(`commentId${commentId}`).remove()
 }
 
+//removes post from dom
 function removePostDom(postId){
   document.getElementById(`postId${postId}`).remove()
 }
 
 
-
+//creates delete button comments
 function createDelComButton(commentId){
   const delButton = document.createElement("button");
   delButton.setAttribute("type", "button");
-  delButton.innerText = 'delete comment';
+  delButton.className = 'button-style';
+  delButton.className += ' del-com';
+  delButton.innerHTML = '&times;';
   delButton.onclick= () => delComment(event, commentId);
   document.getElementById(`commentId${commentId}`).appendChild(delButton);
 
 }
 
-
+//creates delete post button
 function createDelPostButton(postId){
   const delButton = document.createElement("button");
   delButton.setAttribute("type", "button");
-  delButton.innerText = 'delete post';
+  delButton.className = 'button-style';
+  delButton.className += ' del-post';
+  delButton.innerHTML = '&times;';
   delButton.onclick= () => delPost(event, postId);
   document.getElementById(`${postId}`).appendChild(delButton);
 
 }
 
 
-
+//quiereis the api to delete comment
 function delComment(event, commentId) {
   event.preventDefault();
   fetch(`http://thesi.generalassemb.ly:8080/comment/${commentId}`, {
@@ -202,8 +264,6 @@ function delComment(event, commentId) {
         removeComDom(commentId);
       }else if(res.status === 400){
         alert('you can only delete your own comments, buddy.');
-      }else{
-        alert('please delete your commennt after a page refresh');
       }
     })
     .catch(err => {
@@ -211,7 +271,7 @@ function delComment(event, commentId) {
     });
 }
 
-
+//quiereis the api to delete post
 function delPost(event, postId){
   event.preventDefault();
   fetch(`http://thesi.generalassemb.ly:8080/post/${postId}`, {
@@ -233,4 +293,13 @@ function delPost(event, postId){
       console.log(err);
     });
 
+}
+
+
+const createPostWindow = document.querySelector('.create-post-box');
+
+window.onclick = function(event) {
+  if (event.target.className === 'create-post-box') {
+    createPostWindow.style.display = "none";
+  }
 }

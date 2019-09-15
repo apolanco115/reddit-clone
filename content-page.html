@@ -3,44 +3,62 @@
   <head>
     <meta charset="utf-8">
     <title>NotReddit</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/content-style.css">
     <link href="https://fonts.googleapis.com/css?family=Oswald|Raleway&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   </head>
   <body>
 
     <header>
-      <div class="home-link"><a href="content-page.html"><h1>NotReddit</h1></a></div>
+      <div class="home-link link"><a href="content-page.html"><h1>NotReddit</h1></a></div>
       <div class="search-bar">
-        <input type="text" name="searchBar" value="Search">
-        <button> Search </button>
+        <input class="text-input" type="text">
+        <button class="search-button"> search </button>
       </div>
     </header>
 
     <div class="body-content">
       <section class="section profile-section">
-        <h2>Profile</h2>
-        <form onSubmit="createPost(event)" class="postForm">
-          <input type="text" class="title" placeholder="title" required />
-          <input type="text" class="description" placeholder="description" required />
-          <input type="submit" />
-        </form>
+        <h2>profile</h2>
+        <img class="av-img">
+        <button onclick="document.querySelector('.create-post-box').style.display='block'" class="create-post-button button-style">
+          &#43; create post
+        </button>
       </section>
 
       <main>
         <div class ="post-container">
           <ul class="posts">
-          </ul>
         </div>  <!--  post-container end  -->
       </main>
 
       <section class="section friends-section">
-        <h2>Friends</h2>
+        <h2>recent users</h2>
+        <ul class="recent-users">
+        </ul>
       </section>
     </div>
-    <footer>
-      <p> This is a Project by Dominic DeJesus and Austin Polanco </p>
-    </footer>
 
+    <div class="create-post-box">
+      <span onclick="document.querySelector('.create-post-box').style.display='none'" class="close" title="Close"></span>
+
+      <form onSubmit="createPost(event)" class="create-post-box-content">
+        <ul class="create-post-form-content">
+          <div class="create-post-head">
+            <h2>create a post</h1>
+          </div>
+          <li><input type="text" class="title" placeholder="title" required /></li>
+          <li>
+            <textarea name="message" class="description textbox" rows="10" cols="40" placeholder="description" required></textarea>
+          </li>
+          <li><input type="submit" value="post" class="button-style" /></li>
+        </ul>
+      </form>
+    </div>
+    <footer>
+      <p Created by class="link"><a href="https://github.com/domludejesus">Dominic DeJesus</a> and <a href="https://github.com/apolanco115">Austin Polaco</a> <a href="https://github.com/domludejesus/project-1-not-reddit">about</a></p>
+    </footer>
   <script src="js/posts.js" type="text/javascript"></script>
   </body>
 </html>

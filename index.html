@@ -10,15 +10,17 @@
   <body>
     <div class="page-container">
       <header class = "top">
-        <button onclick="document.querySelector('.sign-up-box').style.display='block'">Sign Up</button>
         <div class ="page-title">
           <h1>NotReddit.com<h1>
         </div>
-        <form onSubmit="postData(event)" class="login-form">
-            <input type="text" class="email" placeholder="email" required/>
-            <input type="password" class="pw" placeholder="password" required/>
-            <input class="login-button" type="submit" />
-        </form>
+        <div class="login-signUp">
+          <form onSubmit="postData(event)" class="login-form">
+            <input type="text" class="email text-input" placeholder="email" required/>
+            <input type="password" class="pw text-input" placeholder="password" required/>
+            <input class="login-button" type="submit" value="login" />
+          </form>
+          <button onclick="document.querySelector('.sign-up-box').style.display='block'" class="sign-up-button">Don't have an account?</button>
+        </div>
       </header>
 
       <div class=logo>
@@ -27,19 +29,19 @@
     </div>
 
     <div class="sign-up-box">
-      <span onclick="document.querySelector('.sign-up-box').style.display='none'" class="close" title="Close">&times;</span>
+      <span onclick="document.querySelector('.sign-up-box').style.display='none'" class="close" title="Close"></span>
+
       <form onSubmit="signUp(event)" class="sign-up-box-content">
-        <div class="container">
+        <div class="motto">
           <h1>Sign Up!</h1>
           <p>It's not reddit; we promise.</p>
-
-          <div class = "box-style">
-            <input type="text" class="sign-up-email" placeholder="email" required />
-            <input type="password" class="sign-up-password" placeholder="password" required/>
-            <input type="text" class="username" placeholder="username" required/>
-            <input type="submit" value="sign up" />
-          </div>
         </div>
+        <ul class="sign-up-form-content">
+          <li><input type="text" class="sign-up-email text-input" placeholder="email" required /></li>
+          <li><input type="password" class="sign-up-password text-input" placeholder="password" required/>
+          <li><input type="text" class="username text-input" placeholder="username" required/></li>
+          <li><input type="submit" value="sign up" / class="signUp-button"></li>
+        </ul>
       </form>
     </div>
 

@@ -1,10 +1,8 @@
 body {
-  background-color: #2b2e35;/*#ccdfed;*/
+  background-color: #2b2e35;
   
 }
-h1 {
-  font-family: 'Oswald', sans-serif;
-}
+
 .page-container{
   height: 100vh;
   display: grid;
@@ -20,15 +18,63 @@ h1 {
   height: 100%;
   align-items: center;
   background-color: #191e23;
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(3, calc(100%/3));
 }
 
 
 .page-title {
-  font-family: Sans-Serif;
+  grid-column-end: 2;
+  justify-self: center;
+  font-family: 'Oswald', sans-serif;
   font-size: 2em;
-  color: #ffffff;
+  color: #e1e2ef;
+}
+
+.login-signUp {
+  grid-column-start: 3;
+  justify-self: start;
+  display: flex;
+}
+
+.text-input {
+  background: #cccccc;
+  outline: none;
+  font-family: 'Raleway', sans-serif;
+}
+.text-input:focus{
+  background: #e1e2ef;
+}
+
+.login-button {
+  color: #e1e2ef;
+  text-transform: uppercase;
+  background: #2b2e35;
+  padding-top: .2em;
+  border: .1em solid #e1e2ef;
+  transition: all 0.4s ease 0s;
+}
+
+.login-button:hover {
+  color: #2b2e35;
+  background: #e1e2ef;
+  transition: all 0.4s ease 0s;
+}
+
+.sign-up-button {
+  font-size: 100%;
+  font-family: 'Raleway', sans-serif;
+  color: #556e87; 
+  background: none;
+  border: none;
+  padding: 0;
+  margin-left: 0.5em;
+  transition-duration: 0.4s;
+
+}
+
+.sign-up-button:hover {
+  color: #e1e2ef;
 }
 
 .logo {
@@ -36,81 +82,100 @@ h1 {
   grid-row-start: 2;
   display: flex;
   justify-content: center;
+  position: absolute;
+  animation: bounce 2s forwards;
+
+
 }
 
 .logo img{
-  width: 100%;
+  width: calc(100%/3);
 }
 
 
-input[type=text], input[type=password],  [type=email] {
-/*  width: 100%;
-  padding: 5px;
-  display: inline-block;
-  border: none;*/
-  background: #cccccc;
-  font-family: 'Raleway', sans-serif;
+@keyframes bounce {
+  0% {
+    top: -500px;
+    animation-timing-function: ease-in;
+  }
+  16.66% {
+    top: 200px;
+    animation-timing-function: ease-out;
+  }
+  33.33% {
+    top: 50px;
+    animation-timing-function: ease-in;
+  }
+  50% {
+    top: 200px;
+    animation-timing-function: ease-out;
+  }
+  66.66% {
+    top: 125px;
+    animation-timing-function: ease-in;
+  }
+  83.33% {
+    top: 200px;
+    animation-timing-function: ease-out;
+  }
+
+  100% {
+    top: 200px;
+    animation-timing-function: ease-out;
+  }
 }
 
-input[type=text]:focus, input[type=password]:focus {
-  background-color: #ddd;
-  outline: none;
-  font-family: 'Raleway', sans-serif;
-}
-
-
-/* Float cancel and signup buttons and add an equal width */
-.container {
-  padding: 16px;
-}
-
-.container > button {
-  height: 100px; 
-}
-
-/* sign-up-box (background) */
 .sign-up-box {
   display: none;
   position: fixed;
-  left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;
   background-color: #474e5d80;
-  padding-top: 50px;
 }
 
-/* signup-content box */
 .sign-up-box-content {
-  background-color: #fefefe;
-  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-  border: 1px solid #888;
-  width: 50%; /* Could be more or less, depending on screen size */
+  background-color: #191e23;
+  margin: 5% auto 15% auto;
+  border-radius: 10px;
   font-family: 'Raleway', sans-serif;
-}
-.box-style > input {
-  color: black ;
-  margin: 1% 1% 1% 1%;
-}
-.box-style {
-  padding 10px;
-  padding-top: 1%;
+  width: 15em;
+  height: 10em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* The Close Button */
-.close {
-  position: absolute;
-  right: 35px;
-  top: 15px;
-  font-size: 40px;
-  font-weight: bold;
-  color: #f1f1f1;
+.motto{
+  margin-top: 0.4em;
+  margin-bottom: 0.3em;
+  text-align: center;
+  color: #e1e2ef;
 }
 
+.sign-up-form-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-.close:hover,
-.close:focus {
-  color: #f44336;
-  cursor: pointer;
+}
+
+.sign-up-form-content li{
+  margin-bottom: 0.4em;
+}
+
+.signUp-button {
+
+  color: #e1e2ef;
+  text-transform: uppercase;
+  background: #2b2e35;
+  padding-top: .2em;
+  border: .1em solid #e1e2ef;
+  transition: all 0.4s ease 0s;
+}
+
+.signUp-button:hover {
+  color: #2b2e35;
+  background: #e1e2ef;
+  transition: all 0.4s ease 0s;
 }

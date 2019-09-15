@@ -25,10 +25,10 @@ body {
 
 .page-title {
   grid-column-end: 2;
-  justify-self: end;
+  justify-self: center;
   font-family: 'Oswald', sans-serif;
   font-size: 2em;
-  color: #E1E2EF;
+  color: #e1e2ef;
 }
 
 .login-signUp {
@@ -43,23 +43,22 @@ body {
   font-family: 'Raleway', sans-serif;
 }
 .text-input:focus{
-  background: #E1E2EF;
+  background: #e1e2ef;
 }
 
 .login-button {
-  color: #E1E2EF;
+  color: #e1e2ef;
   text-transform: uppercase;
   background: #2b2e35;
   padding-top: .2em;
-  border: .1em solid #E1E2EF;
+  border: .1em solid #e1e2ef;
   transition: all 0.4s ease 0s;
 }
 
 .login-button:hover {
-color: #2b2e35;
-background: #E1E2EF;
-/*border-color: #f6b93b;*/
-transition: all 0.4s ease 0s;
+  color: #2b2e35;
+  background: #e1e2ef;
+  transition: all 0.4s ease 0s;
 }
 
 .sign-up-button {
@@ -75,7 +74,7 @@ transition: all 0.4s ease 0s;
 }
 
 .sign-up-button:hover {
-  color: #E1E2EF;
+  color: #e1e2ef;
 }
 
 .logo {
@@ -126,8 +125,6 @@ transition: all 0.4s ease 0s;
   }
 }
 
-/* Float cancel and signup buttons and add an equal width */
-
 .sign-up-box {
   display: none;
   position: fixed;
@@ -153,7 +150,7 @@ transition: all 0.4s ease 0s;
   margin-top: 0.4em;
   margin-bottom: 0.3em;
   text-align: center;
-  color: #E1E2EF;
+  color: #e1e2ef;
 }
 
 .sign-up-form-content{
@@ -169,16 +166,16 @@ transition: all 0.4s ease 0s;
 
 .signUp-button {
 
-  color: #E1E2EF;
+  color: #e1e2ef;
   text-transform: uppercase;
   background: #2b2e35;
   padding-top: .2em;
-  border: .1em solid #E1E2EF;
+  border: .1em solid #e1e2ef;
   transition: all 0.4s ease 0s;
 }
 
 .signUp-button:hover {
-color: #2b2e35;
-background: #E1E2EF;
-transition: all 0.4s ease 0s;
+  color: #2b2e35;
+  background: #e1e2ef;
+  transition: all 0.4s ease 0s;
 }

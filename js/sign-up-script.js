@@ -1,4 +1,3 @@
-
 const signUpBox = document.querySelector('.sign-up-box');
 
 window.onclick = function(event) {
@@ -29,7 +28,8 @@ function signUp(event) {
    })
    .then((res) => {
      console.log(res)
-       localStorage.setItem('user', res.token);
+      localStorage.setItem('user', res.token);
+      // alert('thank you for signing up!')
    })
    .catch((err) => {
        console.log(err);

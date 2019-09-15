@@ -28,6 +28,7 @@ header {
 
 .home-link {
   grid-column-end: 2;
+  font-size: 1.1em;
   color: #e1e2ef;
   font-family: 'Oswald', sans-serif;
   justify-self: center;
@@ -35,7 +36,7 @@ header {
 
 }
 .home-link h1{
-  margin: 0;
+  margin: 0.1em;
   font-size: 1.5em;
 }
 .home-link a {
@@ -86,7 +87,7 @@ padding-left: 0;
   text-align: center;
   text-decoration: underline;
   font-weight: 400;
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 .post p {
@@ -101,15 +102,6 @@ padding-left: 0;
  border: .05em solid #e1e2ef;
  transition: all 0.4s ease 0s;
 }
-
-/*.comment {
-  margin-top: 0;
-  background: #e1e2ef 
-  color: #191e23;
-  width: 75%;
-  font-size: 0.5em;
-  text-align: center;
-}*/
 
 .post ul li {
   margin: 0;
@@ -133,6 +125,19 @@ padding-left: 0;
   color: #2b2e35;
   background: #e1e2ef;
   transition: all 0.4s ease 0s;
+}
+
+.create-post-button{
+  width: 70%;
+
+}
+
+.create-com{
+  margin-top: 0.4em;
+  margin-bottom: 0.4em;
+}
+.comment-box{
+  margin-top: 0.4em;
 }
 
 .del-post {
@@ -166,11 +171,18 @@ footer > p {
 }
 .section {
   margin: 1em;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
 
 }
 
 .section h2{
   text-align: center;
+  font-size: 1.2em;
+  font-weight: 600;
+
 }
 
 .profile-section {
@@ -181,3 +193,56 @@ footer > p {
 .friends-section {
   grid-column-start: 3;
 }
+
+
+.create-post-box {
+  display: none;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #474e5d80;
+}
+
+.create-post-box-content {
+  background-color: #191e23;
+  margin: 5% auto 15% auto;
+  border-radius: 10px;
+  font-family: 'Raleway', sans-serif;
+  width: 40em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.create-post-head h2{
+  margin-top: 0.4em;
+  margin-bottom: 0.3em;
+  color: #e1e2ef;
+  font-size: 1.5em;
+}
+
+.create-post-form-content{
+  margin-top: 0.1em;
+
+
+}
+
+.create-post-form-content li{
+  margin-bottom: 0.4em;
+}
+
+.title {
+  width: 98.5%;
+  height: 1.5em;
+  background: #191e23;
+  color: #e1e2ef;
+  font-family: 'Raleway', sans-serif;
+}
+
+.textbox {
+  background: #191e23;
+  color: #e1e2ef;
+  font-family: 'Raleway', sans-serif;
+}
+

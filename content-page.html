@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>NotReddit</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/content-style.css">
     <link href="https://fonts.googleapis.com/css?family=Oswald|Raleway&display=swap" rel="stylesheet">
   </head>
@@ -19,12 +20,12 @@
     <div class="body-content">
       <section class="section profile-section">
         <h2>Profile</h2>
-        <form onSubmit="createPost(event)" class="postForm">
+<!--         <form onSubmit="createPost(event)" class="postForm">
           <input type="text" class="title" placeholder="title" required />
           <input type="text" class="description" placeholder="description" required />
           <input type="submit" />
-        </form>
-        <button class="create-post-button button-style">&#43; create post</button>
+        </form> -->
+        <button onclick="document.querySelector('.create-post-box').style.display='block'" class="create-post-button button-style">&#43; create post</button>
       </section>
 
       <main>
@@ -37,6 +38,24 @@
         <h2>Friends</h2>
       </section>
     </div>
+
+    <div class="create-post-box">
+      <span onclick="document.querySelector('.create-post-box').style.display='none'" class="close" title="Close"></span>
+
+      <form onSubmit="createPost(event)" class="create-post-box-content">
+        <ul class="create-post-form-content">
+          <div class="create-post-head">
+            <h2>create a post</h1>
+          </div>
+          <li><input type="text" class="title" placeholder="title" required /></li>
+          <li>
+            <textarea name="message" class="description textbox" rows="10" cols="40" placeholder="description" required></textarea>
+          </li>
+          <li><input type="submit" value="post" class="button-style" /></li>
+        </ul>
+      </form>
+    </div>
+
     <footer>
       <p>5 footer</p>
     </footer>

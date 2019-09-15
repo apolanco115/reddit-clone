@@ -78,8 +78,9 @@ function updatePostDom(postTitle, postDesc, postId) {
   item.appendChild(description);
   title.innerText = postTitle;
   description.innerText = postDesc;
-  createCommentForm(postId);
+  // createCommentButton(postId)
   item.appendChild(comList);
+  createCommentForm(postId);
 }
 
 //updates dom to display comments
@@ -148,20 +149,43 @@ function viewComments(postId) {
 //creates a form to enter and submit comments on posts
 function createCommentForm(postId) {
     const form = document.createElement("form");
-    const textField = document.createElement("input");
+    const list = document.createElement("ul")
+    const item0 = document.createElement("li")
+    const item1 = document.createElement("li")
+    const textField = document.createElement("textarea");
     textField.id = `textField${postId}`
+    textField.className = "textbox";
+    textField.className += " comment-box";
     textField.required = true; 
     const submitButton = document.createElement("input");  
     form.onsubmit = () => addComment(event, postId);
-    textField.setAttribute("type", "text");
+    textField.setAttribute("rows", "5");
+    textField.setAttribute("type", "30");
     textField.setAttribute("placeholder", "comment");
-    form.appendChild(textField);
+    item0.appendChild(textField);
 
 
     submitButton.type="submit";
-    form.appendChild(submitButton);
+    submitButton.className = "button-style";
+    submitButton.className += " create-com";
+    submitButton.value = `\u002B comment`;
+    item1.appendChild(submitButton);
+    list.appendChild(item0);
+    list.appendChild(item1);
+    form.appendChild(list);
 
     document.getElementById(`${postId}`).appendChild(form);
+}
+
+function createCommentButton(postId){
+  const delButton = document.createElement("button");
+  delButton.setAttribute("type", "button");
+  delButton.className = 'button-style';
+  delButton.className += ' create-com';
+  delButton.innerHTML = `\u002B comment`;
+  delButton.onclick= () => delPost(event, postId);
+  document.getElementById(`${postId}`).appendChild(delButton);
+
 }
 
 //removes comment from dom
@@ -245,4 +269,13 @@ function delPost(event, postId){
       console.log(err);
     });
 
+}
+
+
+const createPostWindow = document.querySelector('.create-post-box');
+
+window.onclick = function(event) {
+  if (event.target.className === 'create-post-box') {
+    createPostWindow.style.display = "none";
+  }
 }

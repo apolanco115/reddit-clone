@@ -39,12 +39,12 @@ header {
   margin: 0.1em;
   font-size: 1.5em;
 }
-.home-link a {
+.link a {
   text-decoration: none;
 
 }
 
-.home-link a:visited{
+.link a:visited{
   color: #e1e2ef;
 }
 
@@ -227,16 +227,6 @@ ul {
   width: 20%;
 }
 
-footer {
-  grid-row: 3;
-  grid-column: 1 / 4;
-  background-color: #02020A;
-}
-
-footer > p {
-  text-align: center;
-  color: #E1E2EF;
-}
 .section {
   margin: 1em;
   display: flex;
@@ -314,3 +304,13 @@ footer > p {
   font-family: 'Raleway', sans-serif;
 }
 
+footer {
+  grid-row: 3;
+  grid-column: 1 / 4;
+  background-color: #02020A;
+}
+
+footer > p {
+  text-align: center;
+  color: #E1E2EF;
+}

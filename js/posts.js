@@ -25,6 +25,7 @@ function listSomePosts(event) {
     .then(res => {
       let subRes = getRandomSubset(res, 15);
       for (let i = 0; i < 15; ++i) {
+        listRecentUsers(subRes[i].user.username);
         updatePostDom(subRes[i].title, subRes[i].description, subRes[i].id);
         viewComments(subRes[i].id);
       }
@@ -33,7 +34,28 @@ function listSomePosts(event) {
       console.log(err);
     });
 }
-listSomePosts();
+window.onload = listSomePosts(event);
+window.onload = loadUserAvatar(event);
+
+function loadUserAvatar(event){
+  const av = document.querySelector(".av-img");
+  const randString = Math.random().toString(36).slice(2);
+  av.setAttribute("src", `http://api.adorable.io/avatars/285/[${randString}].png`)
+}
+
+function listRecentUsers(user){
+  const list = document.querySelector(".recent-users");
+  const av = document.createElement("img");
+  const userText = document.createElement("p");
+  const randString = Math.random().toString(36).slice(2);
+  av.setAttribute("src", `http://api.adorable.io/avatars/285/[${randString}].png`)
+  item = document.createElement("li");
+  item.appendChild(av);
+  userText.innerText = user;
+  item.appendChild(userText);
+  list.appendChild(item)
+}
+
 
 //queries the api for creating post
 function createPost(event) {
@@ -57,6 +79,8 @@ function createPost(event) {
     })
     .then(res => {
       updatePostDom(title.value, description.value, res.id);
+      title.value='';
+      description.value='';
     })
     .catch(err => {
       console.log(err);
@@ -78,7 +102,6 @@ function updatePostDom(postTitle, postDesc, postId) {
   item.appendChild(description);
   title.innerText = postTitle;
   description.innerText = postDesc;
-  // createCommentButton(postId)
   item.appendChild(comList);
   createCommentForm(postId);
 }
@@ -117,6 +140,7 @@ function addComment(event, postId) {
     })
     .then(res => {
       updateCommentDom(commentText.value, postId, res.id);
+      commentText.value='';
     })
     .catch(err => {
       console.log(err);

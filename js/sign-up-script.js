@@ -28,8 +28,21 @@ function signUp(event) {
    })
    .then((res) => {
      console.log(res)
+     if(res.httpStatus !== 'BAD_REQUEST') {
       localStorage.setItem('user', res.token);
-      // alert('thank you for signing up!')
+      alert('thank you for signing up!');
+      email.value='';
+      password.value='';
+      username.value='';
+      signUpBox.style.display = "none";
+     }else{
+      localStorage.clear();
+      alert('please enter valid user information');
+      email.value='';
+      password.value='';
+      username.value='';
+      signUpBox.style.display = "none";
+     }
    })
    .catch((err) => {
        console.log(err);

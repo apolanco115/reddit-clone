@@ -52,8 +52,37 @@ header {
   grid-column: 2 / 3;
   align-self: center;
   justify-self: center;
-
 }
+
+.search-bar:focus{
+  background: #e1e2ef;
+}
+
+.search-button {
+  color: #e1e2ef;
+  text-transform: uppercase;
+  background: #2b2e35;
+  padding-top: .2em;
+  padding-bottom: .12em;
+  border: .1em solid #e1e2ef;
+  transition: all 0.4s ease 0s;
+}
+
+.search-button:hover {
+  color: #2b2e35;
+  background: #e1e2ef;
+  transition: all 0.4s ease 0s;
+}
+
+.text-input {
+  background: #cccccc;
+  outline: none;
+  font-family: 'Raleway', sans-serif;
+}
+.text-input:focus{
+  background: #e1e2ef;
+}
+
 
 h2 {
   color: #e1e2ef;
@@ -68,8 +97,12 @@ ul {
   list-style-type: none;
  }
 
+ .profile-section img {
+  width: 80%;
+ }
+
 .posts{
-padding-left: 0;
+  padding-left: 0;
 }
 
 
@@ -78,7 +111,6 @@ padding-left: 0;
   margin: 1em 5em;
   border-radius: 10px;
   display: grid;
-  justify-items: center;
 }
 
 .post h2 {
@@ -88,6 +120,7 @@ padding-left: 0;
   text-decoration: underline;
   font-weight: 400;
   font-size: 1.5em;
+  justify-self: center;
 }
 
 .post p {
@@ -96,6 +129,7 @@ padding-left: 0;
   width: 75%;
   font-size: 1em;
   text-align: center;
+  justify-self: start;
 }
 
 .post:hover {
@@ -103,13 +137,26 @@ padding-left: 0;
  transition: all 0.4s ease 0s;
 }
 
+.post ul{
+  margin-top: 0.3em;
+  margin-left: 10em;
+}
+
+
 .post ul li {
-  margin: 0;
   display: flex;
 }
 
 .post ul li p{
-  margin: 0;
+  padding: 0.2em;
+  font-size: .8em;
+  text-align: left;
+  border-left: 2px solid #e1e2ef;
+}
+
+.post form {
+  justify-self: start;
+
 }
 
 .button-style {
@@ -128,7 +175,9 @@ padding-left: 0;
 }
 
 .create-post-button{
+  margin-top: 0.5em;
   width: 70%;
+
 
 }
 
@@ -154,9 +203,28 @@ padding-left: 0;
   justify-self: end;
   margin-top: 0.3em;
   margin-left: 0.3em;
-  margin-bottom: 0.3em;
   border-style: none;
   background: #191e23;
+}
+
+.recent-users {
+  margin-top: 0.5em;
+
+}
+
+.recent-users li {
+  display: flex;
+}
+
+.recent-users li p{
+  align-self: center;
+  margin-left: 0.2em;
+  color: #e1e2ef;
+
+}
+
+.recent-users li img {
+  width: 20%;
 }
 
 footer {

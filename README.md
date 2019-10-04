@@ -8,3 +8,8 @@ You start at the index page and either enter your username and password if you a
 
 ## Technical Hurdles
 Delete Post API request is non functioning. 
+
+## Contributers
+Dom
+Gerda
+Austin

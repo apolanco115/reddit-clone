@@ -29,6 +29,13 @@ public class User {
     )
     private List<Post> post;
 
+    @OneToMany(
+            mappedBy = "user",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<Comment> comments;
+
     public User(){};
 
     public Long getId() {

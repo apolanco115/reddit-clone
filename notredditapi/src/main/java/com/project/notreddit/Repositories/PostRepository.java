@@ -1,4 +1,8 @@
 package com.project.notreddit.Repositories;
 
-public class PostRepository {
+import com.project.notreddit.Models.Post;
+import org.springframework.data.repository.CrudRepository;
+
+public interface PostRepository extends CrudRepository<Post, Long> {
+
 }

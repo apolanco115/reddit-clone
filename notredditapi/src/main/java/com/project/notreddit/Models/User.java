@@ -3,6 +3,7 @@ package com.project.notreddit.Models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -92,5 +93,23 @@ public class User {
 
     public void setUserProfile(UserProfile userProfile) {
         this.userProfile = userProfile;
+    }
+
+    public List<Post> addPost(Post post){
+        if (posts==null ){
+            posts = new ArrayList<>();
+        }
+        posts.add(post);
+
+        return posts;
+    }
+
+    public List<Comment> addPost(Comment comment){
+        if (comment==null ){
+            comments = new ArrayList<>();
+        }
+        comments.add(comment);
+
+        return comments;
     }
 }

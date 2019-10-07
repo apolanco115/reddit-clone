@@ -7,10 +7,7 @@ import com.project.notreddit.Services.CommentService;
 import com.project.notreddit.Services.PostService;
 import com.project.notreddit.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class CommentController {
@@ -29,6 +26,11 @@ public class CommentController {
     @PostMapping("/comment")
     public Comment createPost(@RequestBody Comment comment){
         return commentService.createComment(comment);
+    }
+
+    @DeleteMapping("/comment/{commentId}")
+    public void deletePostById(@PathVariable Long commentId){
+        commentService.deleteCommentById(commentId);
     }
 
 }

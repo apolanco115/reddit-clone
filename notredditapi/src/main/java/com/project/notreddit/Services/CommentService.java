@@ -8,4 +8,6 @@ public interface CommentService {
 
     public Comment createComment(Comment comment);
 
+    public void deleteCommentById(Long commentId);
+
 }

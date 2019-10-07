@@ -2,15 +2,15 @@ package com.project.notreddit.Controllers;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.project.notreddit.Config.JwtResponse;
 import com.project.notreddit.Models.Comment;
 import com.project.notreddit.Models.Post;
 import com.project.notreddit.Models.User;
 import com.project.notreddit.Services.UserService;
+import org.hibernate.hql.internal.ast.tree.ResolvableNode;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,6 +34,16 @@ public class UserController {
 
     @GetMapping("/user/{username}/comments")
     public Iterable<Comment> listUserComments(@PathVariable String username){ return userService.listUserComments(username); }
+
+    @PostMapping("/signup")
+    public ResponseEntity<?> createUser(@RequestBody User newUser){
+        return ResponseEntity.ok(new JwtResponse(userService.createUser(newUser)));
+    }
+
+
+
+
+
 
 
 }

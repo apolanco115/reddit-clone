@@ -8,11 +8,11 @@ import java.util.List;
 
 public interface UserService {
 
-    public List<User> listUsers();
+    public Iterable<User> listUsers();
 
-    public List<Post> listUserPosts(String username);
+    public Iterable<Post> listUserPosts(String username);
 
-    public List<Comment> listUserComments(String username);
+    public Iterable<Comment> listUserComments(String username);
 
     public User getUser(String username);
 

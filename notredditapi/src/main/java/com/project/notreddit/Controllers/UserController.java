@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
+//@JsonIdentityInfo(
+//        generator = ObjectIdGenerators.PropertyGenerator.class,
+//        property = "id")
 
 @RestController
 public class UserController {
@@ -27,11 +27,13 @@ public class UserController {
     public String helloWorld(){ return "Hello World!"; }
 
     @GetMapping("/user/list")
-    public List<User> listUsers(){ return userService.listUsers(); }
+    public Iterable<User> listUsers(){ return userService.listUsers(); }
 
     @GetMapping("/user/{username}/posts")
-    public List<Post> listUserPosts(@PathVariable String username){ return userService.listUserPosts(username); }
+    public Iterable<Post> listUserPosts(@PathVariable String username){ return userService.listUserPosts(username); }
 
     @GetMapping("/user/{username}/comments")
-    public List<Comment> listUserComments(@PathVariable String username){ return userService.listUserComments(username); }
+    public Iterable<Comment> listUserComments(@PathVariable String username){ return userService.listUserComments(username); }
+
+
 }

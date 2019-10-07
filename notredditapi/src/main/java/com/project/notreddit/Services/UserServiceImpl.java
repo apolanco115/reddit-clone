@@ -17,18 +17,18 @@ public class UserServiceImpl implements UserService{
     UserRepository userRepository;
 
     @Override
-    public List<User> listUsers(){
-        return (List<User>) userRepository.findAll();
+    public Iterable<User> listUsers(){
+        return userRepository.findAll();
     }
 
     @Override
-    public List<Post> listUserPosts(String username){
+    public Iterable<Post> listUserPosts(String username){
         User user = getUser(username);
         return user.getPosts();
     }
 
     @Override
-    public List<Comment> listUserComments(String username){
+    public Iterable<Comment> listUserComments(String username){
         User user = getUser(username);
         return user.getComments();
     }

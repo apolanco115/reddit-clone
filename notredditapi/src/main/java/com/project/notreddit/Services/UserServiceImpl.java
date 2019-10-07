@@ -77,7 +77,15 @@ public class UserServiceImpl implements UserService{
         return null;
     }
 
+    @Override
+    public String login(User user){
+        User newUser = userRepository.findByUsername(user.getUsername());
 
-
+        if(newUser != null && bCryptPasswordEncoder.matches(user.getPassword(), newUser.getPassword())){
+            UserDetails userDetails = loadUserByUsername(newUser.getUsername());
+            return jwtUtil.genToken(userDetails);
+        }
+        return null;
+    }
 
 }

@@ -24,6 +24,9 @@ public class User {
     @Column
     private String password;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="user_profile_id")
+    private UserProfile userProfile;
 
     @OneToMany(
             mappedBy = "user",
@@ -83,4 +86,11 @@ public class User {
         this.comments = comments;
     }
 
+    public UserProfile getUserProfile() {
+        return userProfile;
+    }
+
+    public void setUserProfile(UserProfile userProfile) {
+        this.userProfile = userProfile;
+    }
 }

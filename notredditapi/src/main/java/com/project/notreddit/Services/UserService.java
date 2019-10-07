@@ -16,5 +16,5 @@ public interface UserService {
 
     public User getUser(String username);
 
-
+    public UserProfileService createUser(User user);
 }

@@ -83,4 +83,6 @@ public class User {
         this.comments = comments;
     }
 
+    public void setUserProfile(UserProfile newProfile) {
+    }
 }

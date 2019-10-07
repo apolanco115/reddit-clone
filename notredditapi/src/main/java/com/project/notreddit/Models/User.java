@@ -1,5 +1,7 @@
 package com.project.notreddit.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -22,18 +24,21 @@ public class User {
     @Column
     private String password;
 
-    @OneToMany(
-            mappedBy = "user",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-    )
-    private List<Post> post;
 
     @OneToMany(
             mappedBy = "user",
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
+    @JsonIgnore
+    private List<Post> posts;
+
+    @OneToMany(
+            mappedBy = "user",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    @JsonIgnore
     private List<Comment> comments;
 
     public User(){};
@@ -62,12 +67,20 @@ public class User {
         this.password = password;
     }
 
-    public List<Post> getPost() {
-        return post;
+    public List<Post> getPosts() {
+        return posts;
     }
 
-    public void setPost(List<Post> post) {
-        this.post = post;
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 
 }

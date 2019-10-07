@@ -1,8 +1,16 @@
 package com.project.notreddit.Models;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 
 @Entity
 @Table(name="posts")
@@ -18,8 +26,17 @@ public class Post {
     @Column
     private String postBody;
 
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name= "user_id", nullable = false)
+    @JsonIgnore
     private User user;
 
     @OneToMany(

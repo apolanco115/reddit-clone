@@ -2,6 +2,7 @@ package com.project.notreddit.Controllers;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.project.notreddit.Config.IAuthentication;
 import com.project.notreddit.Config.JwtResponse;
 import com.project.notreddit.Models.Comment;
 import com.project.notreddit.Models.Post;
@@ -10,6 +11,9 @@ import com.project.notreddit.Services.UserService;
 import org.hibernate.hql.internal.ast.tree.ResolvableNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,8 +27,20 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    private IAuthentication authImpl;
+
+
     @GetMapping("/hello")
     public String helloWorld(){ return "Hello World!"; }
+
+    @GetMapping("/username")
+    @ResponseBody
+    public String getCurrentUsername(){
+        Authentication auth = authImpl.getAuthentication();
+        return auth.getName();
+
+    }
 
     @GetMapping("/user/list")
     public Iterable<User> listUsers(){ return userService.listUsers(); }
@@ -44,11 +60,5 @@ public class UserController {
     public ResponseEntity<?> login(@RequestBody User user) {
         return ResponseEntity.ok(new JwtResponse(userService.login(user)));
     }
-
-
-
-
-
-
 
 }

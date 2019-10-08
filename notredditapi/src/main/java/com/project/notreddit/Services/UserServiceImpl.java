@@ -71,7 +71,7 @@ public class UserServiceImpl implements UserService{
 
         if(userRepository.save(newUser) != null){
             UserDetails userDetails = loadUserByUsername(newUser.getUsername());
-            return jwtUtil.genToken(userDetails);
+            return jwtUtil.generateToken(userDetails);
         }
         return null;
     }
@@ -82,7 +82,7 @@ public class UserServiceImpl implements UserService{
 
         if(newUser != null && bCryptPasswordEncoder.matches(user.getPassword(), newUser.getPassword())){
             UserDetails userDetails = loadUserByUsername(newUser.getUsername());
-            return jwtUtil.genToken(userDetails);
+            return jwtUtil.generateToken(userDetails);
         }
         return null;
     }

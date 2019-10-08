@@ -20,27 +20,30 @@ import javax.persistence.Entity;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
     @Autowired
     UserService userService;
-
-    public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userService);
-    }
 
     @Autowired
     private JwtRequestFilter jwtRequestFilter;
 
     @Bean("encoder")
-    public PasswordEncoder encoder() { return new BCryptPasswordEncoder(); }
+    public PasswordEncoder encoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userService);
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
         http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/signup/**", "/login/**").permitAll()
-                .antMatchers("/user/**", "/post/**", "/comment/**").permitAll()
+                .antMatchers("/post/**","/comment/**").authenticated()
                 .and()
                 .httpBasic();
 

@@ -8,6 +8,7 @@ import com.project.notreddit.Models.Comment;
 import com.project.notreddit.Models.Post;
 import com.project.notreddit.Models.User;
 import com.project.notreddit.Services.UserService;
+import com.project.notreddit.Services.UserServiceImpl;
 import org.hibernate.hql.internal.ast.tree.ResolvableNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -26,6 +26,9 @@ public class UserServiceImpl implements UserService{
     @Autowired
     JwtUtil jwtUtil;
 
+    @Autowired
+    UserProfileService userProfileService;
+
 
     @Autowired
     @Qualifier("encoder")

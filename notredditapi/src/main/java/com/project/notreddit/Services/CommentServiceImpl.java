@@ -36,7 +36,7 @@ public class CommentServiceImpl implements CommentService{
         Authentication auth = authImpl.getAuthentication();
         User user = userService.getUser(auth.getName());
         comment.setUser(user);
-        user.addPost(comment);
+        user.addComment(comment);
 
         return commentRepository.save(comment);
     }

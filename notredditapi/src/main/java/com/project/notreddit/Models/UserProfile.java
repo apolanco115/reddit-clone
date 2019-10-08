@@ -9,7 +9,7 @@ public class UserProfile {
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column
     private String email;

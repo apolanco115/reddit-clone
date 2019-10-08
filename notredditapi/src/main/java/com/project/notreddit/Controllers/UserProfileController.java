@@ -12,6 +12,11 @@ public class UserProfileController {
     @Autowired
     UserProfileService userProfileService;
 
+    @Autowired
+    public void setUserProfileService(UserProfileService userProfileService){
+        this.userProfileService = userProfileService;
+    }
+
     @GetMapping("/{username}")
     public UserProfile getUserProfile(@PathVariable String username) {
         return userProfileService.getUserProfile(username);

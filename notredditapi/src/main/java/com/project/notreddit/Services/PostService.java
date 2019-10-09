@@ -1,6 +1,7 @@
 package com.project.notreddit.Services;
 
 import com.project.notreddit.Models.Post;
+import org.springframework.http.ResponseEntity;
 
 public interface PostService {
 
@@ -8,5 +9,5 @@ public interface PostService {
 
     public Post createPost(Post post);
 
-    public void deletePostById(Long postId);
+    public ResponseEntity deletePostById(Long postId);
 }

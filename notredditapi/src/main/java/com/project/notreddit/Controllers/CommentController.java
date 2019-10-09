@@ -42,17 +42,7 @@ public class CommentController {
 
     @DeleteMapping("/comment/{commentId}")
     public ResponseEntity deleteCommentById(@PathVariable Long commentId){
-        Comment comment = commentRepository.findById(commentId).get();
-        Authentication auth = authImpl.getAuthentication();
-        Long currUserId = userService.getUser(auth.getName()).getId();
-        Long commentUserId = comment.getUser().getId();
-
-        if(currUserId == commentUserId) {
-            commentService.deleteCommentById(commentId);
-        }else {
-            return new ResponseEntity(HttpStatus.NOT_ACCEPTABLE);
-        }
-        return new ResponseEntity(HttpStatus.OK);
+        return commentService.deleteCommentById(commentId);
     }
 
 

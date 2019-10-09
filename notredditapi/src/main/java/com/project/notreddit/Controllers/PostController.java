@@ -40,18 +40,9 @@ public class PostController {
     }
 
     @DeleteMapping("/post/{postId}")
-    public ResponseEntity deletePostById(@PathVariable Long postId){
-        Post post = postRepository.findById(postId).get();
-        Authentication auth = authImpl.getAuthentication();
-        Long currUserId = userService.getUser(auth.getName()).getId();
-        Long postUserId = post.getUser().getId();
-        System.out.println(currUserId+"c p"+postUserId);
-        if(currUserId == postUserId) {
-            postService.deletePostById(postId);
-        }else {
-            return new ResponseEntity(HttpStatus.NOT_ACCEPTABLE);
-        }
-        return new ResponseEntity(HttpStatus.OK);
+    public ResponseEntity deletePostById(@PathVariable Long postId) {
+        return postService.deletePostById(postId);
     }
+
 
 }

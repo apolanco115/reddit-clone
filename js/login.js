@@ -9,7 +9,7 @@ function postData(event) {
                'Content-Type': 'application/json'
            },
            body: JSON.stringify({
-               email: email.value,
+               username: email.value,
                password: password.value,
            })
    })
@@ -17,9 +17,10 @@ function postData(event) {
       return res.json();
    })
    .then((res) => {
-     console.log(res)
+     // console.log(res)
        localStorage.setItem('user', res.token);
-       if(res.httpStatus !== 'BAD_REQUEST') {
+       console.log(res.token)
+       if(res.token !== null) {
         window.location.href = "content-page.html";
        }else{
         localStorage.clear();

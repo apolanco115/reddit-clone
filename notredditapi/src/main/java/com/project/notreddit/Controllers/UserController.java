@@ -1,27 +1,17 @@
 package com.project.notreddit.Controllers;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.project.notreddit.Config.IAuthentication;
 import com.project.notreddit.Config.JwtResponse;
 import com.project.notreddit.Models.Comment;
 import com.project.notreddit.Models.Post;
 import com.project.notreddit.Models.User;
 import com.project.notreddit.Services.UserService;
-import org.hibernate.hql.internal.ast.tree.ResolvableNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
-//@JsonIdentityInfo(
-//        generator = ObjectIdGenerators.PropertyGenerator.class,
-//        property = "id")
-
+@CrossOrigin(maxAge = 12*60*60)
 @RestController
 public class UserController {
     @Autowired

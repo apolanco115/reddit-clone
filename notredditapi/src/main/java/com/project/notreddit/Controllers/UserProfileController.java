@@ -6,6 +6,7 @@ import com.project.notreddit.Services.UserProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(maxAge = 12*60*60)
 @RestController
 public class UserProfileController {
     @Autowired

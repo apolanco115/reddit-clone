@@ -3,7 +3,7 @@ function postData(event) {
    const email = document.querySelector('.email');
    const password = document.querySelector('.pw');
    console.log(email.value, password.value)
-   fetch('http://thesi.generalassemb.ly:8080/login', {
+   fetch('http://localhost:8181/login', {
            method: 'POST',
            headers: {
                'Content-Type': 'application/json'

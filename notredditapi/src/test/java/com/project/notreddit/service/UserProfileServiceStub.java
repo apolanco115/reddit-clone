@@ -6,7 +6,7 @@ import com.project.notreddit.Services.UserProfileService;
 public class UserProfileServiceStub implements UserProfileService {
 
     @Override
-    public UserProfile createUserProfile(String username, UserProfile newProfile){
+    public UserProfile updateUserProfile(UserProfile newProfile){
         UserProfile userProfile = new UserProfile();
         userProfile.setEmail("hey@heythere.com");
         userProfile.setMobile("7294092344");

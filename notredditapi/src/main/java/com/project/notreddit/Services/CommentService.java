@@ -1,6 +1,7 @@
 package com.project.notreddit.Services;
 
 import com.project.notreddit.Models.Comment;
+import org.springframework.http.ResponseEntity;
 
 public interface CommentService {
 
@@ -8,6 +9,6 @@ public interface CommentService {
 
     public Comment createComment(Comment comment);
 
-    public void deleteCommentById(Long commentId);
+    public ResponseEntity deleteCommentById(Long commentId);
 
 }

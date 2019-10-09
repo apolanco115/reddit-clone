@@ -6,6 +6,8 @@ import com.project.notreddit.Models.User;
 import com.project.notreddit.Repositories.PostRepository;
 import com.project.notreddit.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
@@ -42,10 +44,20 @@ public class PostServiceImpl implements PostService {
 
     @Override
     @Transactional
-    public void deletePostById(Long postId){
+    public ResponseEntity deletePostById(Long postId){
+
         Post post = postRepository.findById(postId).get();
+        Authentication auth = authImpl.getAuthentication();
+        Long currUserId = userService.getUser(auth.getName()).getId();
+        Long postUserId = post.getUser().getId();
         User user = userRepository.findById(post.getUser().getId()).get();
-        user.getPosts().remove(post);
+
+        if(currUserId==postUserId){
+            user.getPosts().remove(post);
+        }else {
+            return new ResponseEntity(HttpStatus.NOT_ACCEPTABLE);
+        }
+        return new ResponseEntity(HttpStatus.OK);
     }
 
 }

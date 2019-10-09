@@ -23,7 +23,7 @@ public class UserProfileControllerTest {
         userProfile.setEmail("hey@heythere.com");
         userProfile.setMobile("7294092344");
 
-        UserProfile newProfile = userProfileController.createUserProfile("hey", userProfile);
+        UserProfile newProfile = userProfileController.updateUserProfile(userProfile);
 
         Assert.assertNotNull(newProfile);
         Assert.assertEquals(newProfile.getEmail(),userProfile.getEmail());

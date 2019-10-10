@@ -12,13 +12,15 @@ function signUp(event) {
    const password = document.querySelector('.sign-up-password');
    const username = document.querySelector('.username');
    console.log(email.value, password.value, username.value)
-   fetch('http://thesi.generalassemb.ly:8080/signup', {
+   fetch('http://localhost:8181/signup/', {
            method: 'POST',
            headers: {
                'Content-Type': 'application/json'
            },
            body: JSON.stringify({
-               email: email.value,
+               userProfile: {
+                 email: email.value
+               },
                password: password.value,
                username: username.value
            })

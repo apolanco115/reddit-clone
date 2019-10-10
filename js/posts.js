@@ -13,7 +13,7 @@ function getRandomSubset(arr, size) {
 
 //queries api for list of all posts
 function listSomePosts(event) {
-  fetch("http://thesi.generalassemb.ly:8080/post/list", {
+  fetch('http://localhost:8181/post/list', {
     method: "GET",
     headers: {
       "Content-Type": "application/json"
@@ -26,7 +26,7 @@ function listSomePosts(event) {
       let subRes = getRandomSubset(res, 15);
       for (let i = 0; i < 15; ++i) {
         listRecentUsers(subRes[i].user.username);
-        updatePostDom(subRes[i].title, subRes[i].description, subRes[i].id);
+        updatePostDom(subRes[i].title, subRes[i].body, subRes[i].id);
         viewComments(subRes[i].id);
       }
     })
@@ -61,16 +61,16 @@ function listRecentUsers(user){
 function createPost(event) {
   event.preventDefault();
   const title = document.querySelector(".title");
-  const description = document.querySelector(".description");
-  fetch("http://thesi.generalassemb.ly:8080/post", {
+  const body = document.querySelector(".description");
+  fetch("http://localhost:8181/post/", {
     method: "POST",
     headers: {
       Authorization: "Bearer " + localStorage.getItem("user"),
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      title: title.value,
-      description: description.value
+      postTitle: title.value,
+      postBody: body.value
     })
   })
     .then(res => {
@@ -78,9 +78,9 @@ function createPost(event) {
       return res.json();
     })
     .then(res => {
-      updatePostDom(title.value, description.value, res.id);
+      updatePostDom(title.value, body.value, res.id);
       title.value='';
-      description.value='';
+      body.value='';
     })
     .catch(err => {
       console.log(err);
@@ -97,11 +97,11 @@ function updatePostDom(postTitle, postDesc, postId) {
   list.insertBefore(item, list.firstChild);
   createDelPostButton(postId);
   const title = document.createElement("h2");
-  const description = document.createElement("p");
+  const body = document.createElement("p");
   item.appendChild(title);
-  item.appendChild(description);
+  item.appendChild(body);
   title.innerText = postTitle;
-  description.innerText = postDesc;
+  body.innerText = postBody;
   item.appendChild(comList);
   createCommentForm(postId);
 }
@@ -124,14 +124,14 @@ function updateCommentDom(commentText, postId, commentId) {
 function addComment(event, postId) {
   event.preventDefault();
   const commentText = document.getElementById(`textField${postId}`);
-  fetch(`http://thesi.generalassemb.ly:8080/comment/${postId}`, {
+  fetch('http://localhost:8181/comment', {
     method: "POST",
     headers: {
       Authorization: "Bearer " + localStorage.getItem("user"),
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      text: commentText.value,
+      comment: commentText.value,
     })
   })
     .then(res => {
@@ -147,9 +147,9 @@ function addComment(event, postId) {
     });
 }
 
-//queries api for ccomments on postId
+//queries api for comments on postId
 function viewComments(postId) {
-  fetch(`http://thesi.generalassemb.ly:8080/post/${postId}/comment`, {
+  fetch('http://localhost:8181/comment', {
     method: "GET",
     headers: {
       "Content-Type": "application/json"
@@ -180,8 +180,8 @@ function createCommentForm(postId) {
     textField.id = `textField${postId}`
     textField.className = "textbox";
     textField.className += " comment-box";
-    textField.required = true; 
-    const submitButton = document.createElement("input");  
+    textField.required = true;
+    const submitButton = document.createElement("input");
     form.onsubmit = () => addComment(event, postId);
     textField.setAttribute("rows", "5");
     textField.setAttribute("type", "30");
@@ -251,7 +251,7 @@ function createDelPostButton(postId){
 //quiereis the api to delete comment
 function delComment(event, commentId) {
   event.preventDefault();
-  fetch(`http://thesi.generalassemb.ly:8080/comment/${commentId}`, {
+  fetch(`http://localhost:8181/comment/${commentId}`, {
     method: "DELETE",
     headers: {
       Authorization: "Bearer " + localStorage.getItem("user"),
@@ -274,7 +274,7 @@ function delComment(event, commentId) {
 //quiereis the api to delete post
 function delPost(event, postId){
   event.preventDefault();
-  fetch(`http://thesi.generalassemb.ly:8080/post/${postId}`, {
+  fetch(`http://localhost:8181/post/${postId}`, {
     method: "DELETE",
     headers: {
       Authorization: "Bearer " + localStorage.getItem("user"),

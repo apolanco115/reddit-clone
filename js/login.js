@@ -1,15 +1,15 @@
 function postData(event) {
    event.preventDefault();
-   const email = document.querySelector('.email');
+   const username = document.querySelector('.email');
    const password = document.querySelector('.pw');
-   console.log(email.value, password.value)
+   console.log(username.value, password.value)
    fetch('http://localhost:8181/login', {
            method: 'POST',
            headers: {
                'Content-Type': 'application/json'
            },
            body: JSON.stringify({
-               username: email.value,
+               username: username.value,
                password: password.value,
            })
    })

@@ -3,7 +3,7 @@ package com.project.notreddit.Services;
 import com.project.notreddit.Models.Post;
 import org.springframework.http.ResponseEntity;
 
-public interface PostService {
+public interface    PostService {
 
     public Iterable<Post> listAllPosts();
 

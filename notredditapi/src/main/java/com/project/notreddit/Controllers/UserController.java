@@ -11,7 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(maxAge = 12*60*60)
+//@CrossOrigin(maxAge = 12*60*60)
 @RestController
 public class UserController {
     @Autowired

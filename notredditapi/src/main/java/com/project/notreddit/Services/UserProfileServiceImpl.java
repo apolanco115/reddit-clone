@@ -24,10 +24,10 @@ public class UserProfileServiceImpl implements UserProfileService {
         Authentication auth = authImpl.getAuthentication();
         User user = userService.getUser(auth.getName());
         if(newProfile.getEmail()!=null){
-            user.getUserProfile().setEmail(newProfile.getEmail());
+            user.getUserProfile().setEmail(newProfile.getEmail().toString());
         }
         if(newProfile.getMobile()!=null){
-            user.getUserProfile().setMobile(newProfile.getMobile());
+            user.getUserProfile().setMobile(newProfile.getMobile().toString());
         }
         return userProfileRepository.save(user.getUserProfile());
     }

@@ -178,6 +178,11 @@ ul {
   margin-top: 0.5em;
   width: 70%;
 
+}
+
+.update-profile-button{
+  margin-top: 0.5em;
+  width: 70%;
 
 }
 
@@ -252,7 +257,7 @@ ul {
   grid-column-start: 3;
 }
 
-.create-post-box {
+.create-post-box, .update-profile-box {
   display: none;
   position: fixed;
   top: 0;
@@ -281,8 +286,6 @@ ul {
 
 .create-post-form-content{
   margin-top: 0.1em;
-
-
 }
 
 .create-post-form-content li{

@@ -296,11 +296,52 @@ function delPost(event, postId){
 
 }
 
+function updateProf(event) {
+  event.preventDefault();
+  const email = document.querySelector(".email");
+  const mobile = document.querySelector(".mobile");
+  console.log(email.value, mobile.value, localStorage.getItem("user"));
+  fetch("http://localhost:8181/profile", {
+    method: "PUT",
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("user"),
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      email: email.value,
+      mobile: mobile.value
+    })
+  })
+    .then(res => {
+      console.log(res);
+      return res.json();
+    })
+    .catch(err => {
+      console.log(err);
+    });
+}
+
+
+
+
+const updateProfWindow = document.querySelector('.update-profile-box');
 
 const createPostWindow = document.querySelector('.create-post-box');
 
 window.onclick = function(event) {
-  if (event.target.className === 'create-post-box') {
+  if (event.target.className === 'update-profile-box' ) {
+    updateProfWindow.style.display = "none";
+  }
+   if (event.target.className === 'create-post-box') {
     createPostWindow.style.display = "none";
   }
 }
+
+
+
+// window.onclick = function(event) {
+//   if (event.target.className === 'create-post-box') {
+//     createPostWindow.style.display = "none";
+//   }
+// }
+

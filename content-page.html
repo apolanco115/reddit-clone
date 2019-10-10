@@ -25,6 +25,10 @@
         <button onclick="document.querySelector('.create-post-box').style.display='block'" class="create-post-button button-style">
           &#43; create post
         </button>
+
+        <button onclick="document.querySelector('.update-profile-box').style.display='block'" class="update-profile-button button-style">
+          update profile
+        </button>
       </section>
 
       <main>
@@ -55,7 +59,23 @@
           <li><input type="submit" value="post" class="button-style" /></li>
         </ul>
       </form>
+    </div>    
+
+    <div class="update-profile-box">
+      <span onclick="document.querySelector('.update-profile-box').style.display='none'" class="close" title="Close"></span>
+
+      <form onSubmit="updateProf(event)" class="create-post-box-content">
+        <ul class="create-post-form-content">
+          <div class="create-post-head">
+            <h2>update profile</h1>
+          </div>
+          <li><input type="text" class="email" placeholder="email"/></li>
+          <li><input type="text" class="mobile" placeholder="mobile"/></li>
+          <li><input type="submit" value="update" class="button-style" /></li>
+        </ul>
+      </form>
     </div>
+
     <footer>
       <p Created by class="link"><a href="https://github.com/domludejesus">Dominic DeJesus</a> and <a href="https://github.com/apolanco115">Austin Polaco</a> <a href="https://github.com/domludejesus/project-1-not-reddit">about</a></p>
     </footer>

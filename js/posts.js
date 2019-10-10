@@ -16,6 +16,7 @@ function listSomePosts(event) {
   fetch('http://localhost:8181/post/list', {
     method: "GET",
     headers: {
+      Authorization: "Bearer " + localStorage.getItem("user"),
       "Content-Type": "application/json"
     }
   })
@@ -23,11 +24,10 @@ function listSomePosts(event) {
       return res.json();
     })
     .then(res => {
-      let subRes = getRandomSubset(res, 15);
-      for (let i = 0; i < 15; ++i) {
-        listRecentUsers(subRes[i].user.username);
-        updatePostDom(subRes[i].title, subRes[i].body, subRes[i].id);
-        viewComments(subRes[i].id);
+      for (let i = 0; i < res.length; ++i) {
+        console.log(res);
+        updatePostDom(res[i].postTitle, res[i].postBody, res[i].id);
+        viewComments(res[i].id);
       }
     })
     .catch(err => {
@@ -101,7 +101,7 @@ function updatePostDom(postTitle, postDesc, postId) {
   item.appendChild(title);
   item.appendChild(body);
   title.innerText = postTitle;
-  body.innerText = postBody;
+  body.innerText = postDesc;
   item.appendChild(comList);
   createCommentForm(postId);
 }
@@ -149,9 +149,10 @@ function addComment(event, postId) {
 
 //queries api for comments on postId
 function viewComments(postId) {
-  fetch('http://localhost:8181/comment', {
+  fetch('http://localhost:8181/comment/list', {
     method: "GET",
     headers: {
+      Authorization: "Bearer " + localStorage.getItem("user"),
       "Content-Type": "application/json"
     }
   })
@@ -160,7 +161,7 @@ function viewComments(postId) {
     })
     .then(res => {
       for (let i = 0; i < res.length; ++i) {
-        updateCommentDom(res[i].text, postId, res[i].id);
+        updateCommentDom(res[i].comment, postId, res[i].id);
       }
     })
     .catch(err => {

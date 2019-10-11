@@ -249,7 +249,7 @@ function createDelPostButton(postId){
 }
 
 
-//quiereis the api to delete comment
+//queries the api to delete comment
 function delComment(event, commentId) {
   event.preventDefault();
   fetch(`http://localhost:8181/comment/${commentId}`, {
@@ -322,14 +322,39 @@ function updateProf(event) {
 }
 
 
+// function viewProf(event) {
+//   event.preventDefault();
+//   const email = document.querySelector(".email");
+//   const mobile = document.querySelector(".mobile");
+//   console.log(email.value, mobile.value, localStorage.getItem("user"));
+//   fetch("http://localhost:8181/profile", {
+//     method: "Get",
+//     headers: {
+//       Authorization: "Bearer " + localStorage.getItem("user"),
+//       "Content-Type": "application/json"
+//     },
+//   })
+//   .then(res => {
+//     return res.json();
+//   })
+//   .catch(err => {
+//     console.log(err);
+//   });
+// }
+
 
 
 const updateProfWindow = document.querySelector('.update-profile-box');
+
+// const updateProfWindow = document.querySelector('.view-profile-box');
 
 const createPostWindow = document.querySelector('.create-post-box');
 
 window.onclick = function(event) {
   if (event.target.className === 'update-profile-box' ) {
+    updateProfWindow.style.display = "none";
+  }
+  if (event.target.className === 'view-profile-box' ) {
     updateProfWindow.style.display = "none";
   }
    if (event.target.className === 'create-post-box') {
@@ -344,4 +369,3 @@ window.onclick = function(event) {
 //     createPostWindow.style.display = "none";
 //   }
 // }
-

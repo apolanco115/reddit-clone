@@ -26,6 +26,10 @@
           &#43; create post
         </button>
 
+        <button onclick="document.querySelector('.view-profile-box').style.display='block'" class="view-profile-button button-style">
+          view profile
+        </button>
+
         <button onclick="document.querySelector('.update-profile-box').style.display='block'" class="update-profile-button button-style">
           update profile
         </button>
@@ -59,7 +63,22 @@
           <li><input type="submit" value="post" class="button-style" /></li>
         </ul>
       </form>
-    </div>    
+    </div>
+
+    <div class="view-profile-box">
+      <span onclick="document.querySelector('.view-profile-box').style.display='none'" class="close" title="Close"></span>
+
+      <form onSubmit="viewProf(event)" class="create-post-box-content">
+        <ul class="create-post-form-content">
+          <div class="create-post-head">
+            <h2>view profile</h1>
+          </div>
+          <li><input type="text" class="email" placeholder="email"/></li>
+          <li><input type="text" class="mobile" placeholder="mobile"/></li>
+          <li><input type="submit" value="update" class="button-style" /></li>
+        </ul>
+      </form>
+    </div>
 
     <div class="update-profile-box">
       <span onclick="document.querySelector('.update-profile-box').style.display='none'" class="close" title="Close"></span>

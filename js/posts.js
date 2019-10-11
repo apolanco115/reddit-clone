@@ -83,6 +83,7 @@ function createPost(event) {
       updatePostDom(title.value, body.value, res.id);
       title.value='';
       body.value='';
+      createPostWindow.style.display = "none";
     })
     .catch(err => {
       console.log(err);
@@ -319,6 +320,7 @@ function updateProf(event) {
   })
     .then(res => {
       console.log(res);
+      updateProfWindow.style.display = "none";
       return res.json();
     })
     .catch(err => {
@@ -327,31 +329,35 @@ function updateProf(event) {
 }
 
 
-// function viewProf(event) {
-//   event.preventDefault();
-//   const email = document.querySelector(".email");
-//   const mobile = document.querySelector(".mobile");
-//   console.log(email.value, mobile.value, localStorage.getItem("user"));
-//   fetch("http://localhost:8181/profile", {
-//     method: "Get",
-//     headers: {
-//       Authorization: "Bearer " + localStorage.getItem("user"),
-//       "Content-Type": "application/json"
-//     },
-//   })
-//   .then(res => {
-//     return res.json();
-//   })
-//   .catch(err => {
-//     console.log(err);
-//   });
-// }
+function viewProf(event) {
+  event.preventDefault();
+  document.querySelector('.view-profile-box').style.display='block';
+  const email = document.querySelector(".vemail");
+  const mobile = document.querySelector(".vmobile");
+  fetch("http://localhost:8181/profile", {
+    method: "Get",
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("user"),
+      "Content-Type": "application/json"
+    },
+  })
+  .then(res => {
+    return res.json();
+  })
+  .then(res =>{
+    email.innerText = "email: " + res.email;
+    mobile.innerText = "mobile: " + res.mobile;
+  })
+  .catch(err => {
+    console.log(err);
+  });
+}
 
 
 
 const updateProfWindow = document.querySelector('.update-profile-box');
 
-// const updateProfWindow = document.querySelector('.view-profile-box');
+const viewProfWindow = document.querySelector('.view-profile-box');
 
 const createPostWindow = document.querySelector('.create-post-box');
 
@@ -360,7 +366,7 @@ window.onclick = function(event) {
     updateProfWindow.style.display = "none";
   }
   if (event.target.className === 'view-profile-box' ) {
-    updateProfWindow.style.display = "none";
+    viewProfWindow.style.display = "none";
   }
    if (event.target.className === 'create-post-box') {
     createPostWindow.style.display = "none";

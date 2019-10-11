@@ -26,7 +26,7 @@
           &#43; create post
         </button>
 
-        <button onclick="document.querySelector('.view-profile-box').style.display='block'" class="view-profile-button button-style">
+        <button onclick="viewProf(event)" class="view-profile-button button-style">
           view profile
         </button>
 
@@ -68,16 +68,13 @@
     <div class="view-profile-box">
       <span onclick="document.querySelector('.view-profile-box').style.display='none'" class="close" title="Close"></span>
 
-      <form onSubmit="viewProf(event)" class="create-post-box-content">
-        <ul class="create-post-form-content">
+        <ul class="create-post-box-content">
           <div class="create-post-head">
-            <h2>view profile</h1>
+            <h2>profile</h1>
           </div>
-          <li><input type="text" class="email" placeholder="email"/></li>
-          <li><input type="text" class="mobile" placeholder="mobile"/></li>
-          <li><input type="submit" value="update" class="button-style" /></li>
+          <li><h2 class="vemail">email:</h2></li>
+          <li><h2 class="vmobile">mobile:</h2></li>
         </ul>
-      </form>
     </div>
 
     <div class="update-profile-box">

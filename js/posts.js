@@ -25,9 +25,11 @@ function listSomePosts(event) {
     })
     .then(res => {
       for (let i = 0; i < res.length; ++i) {
-        console.log(res);
         updatePostDom(res[i].postTitle, res[i].postBody, res[i].id);
-        viewComments(res[i].id);
+        for(let j = 0; j < res[i].comments.length; ++j){
+          updateCommentDom(res[i].comments[j].comment, res[i].id, res[i].comments[j].id);
+        }
+        //viewComments(res[i].id);
       }
     })
     .catch(err => {
@@ -81,6 +83,7 @@ function createPost(event) {
       updatePostDom(title.value, body.value, res.id);
       title.value='';
       body.value='';
+      createPostWindow.style.display = "none";
     })
     .catch(err => {
       console.log(err);
@@ -132,6 +135,9 @@ function addComment(event, postId) {
     },
     body: JSON.stringify({
       comment: commentText.value,
+      post: {
+        id: postId
+      }
     })
   })
     .then(res => {
@@ -220,7 +226,7 @@ function removeComDom(commentId){
 
 //removes post from dom
 function removePostDom(postId){
-  document.getElementById(`postId${postId}`).remove()
+  document.getElementById(`${postId}`).remove()
 }
 
 
@@ -249,7 +255,7 @@ function createDelPostButton(postId){
 }
 
 
-//quiereis the api to delete comment
+//queries the api to delete comment
 function delComment(event, commentId) {
   event.preventDefault();
   fetch(`http://localhost:8181/comment/${commentId}`, {
@@ -263,7 +269,7 @@ function delComment(event, commentId) {
       console.log(res);
       if(res.status === 200){
         removeComDom(commentId);
-      }else if(res.status === 400){
+      }else if(res.status === 406){
         alert('you can only delete your own comments, buddy.');
       }
     })
@@ -285,7 +291,7 @@ function delPost(event, postId){
     .then(res => {
       console.log(res);
       if(res.status === 200){
-        removeComDom(commentId);
+        removePostDom(postId);
       }else{
         alert('you can only delete your own posts, buddy.')
       }
@@ -314,6 +320,7 @@ function updateProf(event) {
   })
     .then(res => {
       console.log(res);
+      updateProfWindow.style.display = "none";
       return res.json();
     })
     .catch(err => {
@@ -322,15 +329,44 @@ function updateProf(event) {
 }
 
 
+function viewProf(event) {
+  event.preventDefault();
+  document.querySelector('.view-profile-box').style.display='block';
+  const email = document.querySelector(".vemail");
+  const mobile = document.querySelector(".vmobile");
+  fetch("http://localhost:8181/profile", {
+    method: "Get",
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("user"),
+      "Content-Type": "application/json"
+    },
+  })
+  .then(res => {
+    return res.json();
+  })
+  .then(res =>{
+    email.innerText = "email: " + res.email;
+    mobile.innerText = "mobile: " + res.mobile;
+  })
+  .catch(err => {
+    console.log(err);
+  });
+}
+
 
 
 const updateProfWindow = document.querySelector('.update-profile-box');
+
+const viewProfWindow = document.querySelector('.view-profile-box');
 
 const createPostWindow = document.querySelector('.create-post-box');
 
 window.onclick = function(event) {
   if (event.target.className === 'update-profile-box' ) {
     updateProfWindow.style.display = "none";
+  }
+  if (event.target.className === 'view-profile-box' ) {
+    viewProfWindow.style.display = "none";
   }
    if (event.target.className === 'create-post-box') {
     createPostWindow.style.display = "none";
@@ -344,4 +380,3 @@ window.onclick = function(event) {
 //     createPostWindow.style.display = "none";
 //   }
 // }
-

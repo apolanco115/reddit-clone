@@ -180,7 +180,7 @@ ul {
 
 }
 
-.update-profile-button{
+.update-profile-button, .view-profile-button {
   margin-top: 0.5em;
   width: 70%;
 
@@ -257,7 +257,7 @@ ul {
   grid-column-start: 3;
 }
 
-.create-post-box, .update-profile-box {
+.create-post-box, .update-profile-box, .view-profile-box{
   display: none;
   position: fixed;
   top: 0;

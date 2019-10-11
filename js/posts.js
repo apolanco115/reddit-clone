@@ -132,6 +132,9 @@ function addComment(event, postId) {
     },
     body: JSON.stringify({
       comment: commentText.value,
+      post: {
+        id: postId
+      }
     })
   })
     .then(res => {

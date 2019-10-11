@@ -25,9 +25,11 @@ function listSomePosts(event) {
     })
     .then(res => {
       for (let i = 0; i < res.length; ++i) {
-        console.log(res);
         updatePostDom(res[i].postTitle, res[i].postBody, res[i].id);
-        viewComments(res[i].id);
+        for(let j = 0; j < res[i].comments.length; ++j){
+          updateCommentDom(res[i].comments[j].comment, res[i].id, res[i].comments[j].id);
+        }
+        //viewComments(res[i].id);
       }
     })
     .catch(err => {
@@ -223,7 +225,7 @@ function removeComDom(commentId){
 
 //removes post from dom
 function removePostDom(postId){
-  document.getElementById(`postId${postId}`).remove()
+  document.getElementById(`${postId}`).remove()
 }
 
 
@@ -266,7 +268,7 @@ function delComment(event, commentId) {
       console.log(res);
       if(res.status === 200){
         removeComDom(commentId);
-      }else if(res.status === 400){
+      }else if(res.status === 406){
         alert('you can only delete your own comments, buddy.');
       }
     })
@@ -288,7 +290,7 @@ function delPost(event, postId){
     .then(res => {
       console.log(res);
       if(res.status === 200){
-        removeComDom(commentId);
+        removePostDom(postId);
       }else{
         alert('you can only delete your own posts, buddy.')
       }

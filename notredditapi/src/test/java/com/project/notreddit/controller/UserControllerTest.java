@@ -1,6 +1,7 @@
 package com.project.notreddit.controller;
 
 
+import com.project.notreddit.Config.IAuthentication;
 import com.project.notreddit.Config.JwtUtil;
 import com.project.notreddit.Controllers.UserController;
 import com.project.notreddit.Services.UserService;
@@ -30,6 +31,9 @@ public class UserControllerTest {
 
     @MockBean
     private JwtUtil jwtUtil;
+
+    @MockBean
+    private IAuthentication authImpl;
 
     @Autowired
     private MockMvc mockMvc;

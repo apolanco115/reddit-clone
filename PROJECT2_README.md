@@ -1,5 +1,9 @@
 ## Project Two
 
+## Introduction
+
+For second project we were assigned the task of creating a fully functional back-end API to compliment the original front-end Reddit Clone project we had created earlier in the class.
+
 ## Technologies Used
 - HTML
 - CSS
@@ -7,6 +11,7 @@
 - Java
 - Spring Boot
 - Postgres SQL
+
 
 ## Dependencies Used
 
@@ -22,7 +27,7 @@ https://start.spring.io
 
 ## Approach Taken
 
-In our first planning meeting, we discussed how we wanted to map our table relationships as it pertained to the overall database. Once we whiteboarded our ERD and split up what parts of the database each person would work on, we were able to start working on our respective sections. In addition to working on separate files, we created separate branches to organize our control flow.
+In our initial planning meeting, we discussed how we wanted to map our table relationships as it pertained to the overall database. Once we whiteboarded our ERD and split up what parts of the database each person would work on, we were able to start working on our respective sections. In addition to working on separate files, we created separate branches to organize our control flow.
 
 ![Wireframe 1](/images/wireframe1.png)
 Format: ![wireframe1 image](url)
@@ -48,6 +53,16 @@ We faced our biggest hurdle when we were linking our back-end to our front-end. 
 
 ![CORS Error](/images/cors_error.png)
 Format: ![cors error image](url)
+
+## User Stories
+
+**Robert**: An avid sports fan who enjoys friendly sports banter by posting about sports updates and commenting on the posts of other sports fans.
+
+**Sarah**: When she is not hard at work, Sarah likes get a good laugh as she reads countless posts by Not Reddit members on various topics.
+
+**Tom**: Sometimes he's not always in the right frame of mind, Tom wants to be able to delete his post or comments just incase he makes a mistake of saying the wrong thing.
+
+
 
 ## Contributors
 Austin

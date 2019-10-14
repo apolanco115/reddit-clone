@@ -34,12 +34,9 @@ public class UserProfileServiceImpl implements UserProfileService {
 
     @Override
     public UserProfile getUserProfile() {
-        System.out.println("before auth");
         Authentication auth = authImpl.getAuthentication();
-        System.out.println("after auth");
         User user = userService.getUser(auth.getName());
-        System.out.println(user.getUsername());
-        return userProfileRepository.findProfileByUsername(user.getUsername());
+        return userProfileRepository.findById(user.getUserProfile().getId()).get();
     }
 
 }
